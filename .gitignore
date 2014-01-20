@@ -1,0 +1,11 @@
+#Ignore:
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
+/app/config/sendGridConfig.php
+/app/config/defaultMailConfig.php
+/app/config/local/*
+.DS_Store
+l4withsentry.sublime-workspace
+l4withsentry.sublime-project

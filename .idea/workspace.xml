@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5025e359-fed4-4b05-9f74-70a0b04d94f9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/database/migrations/2014_01_05_112923_update_properties_fields_table.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/database/migrations/2014_01_05_113654_drop_created_column_properties.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/database/migrations/2014_01_05_125458_add_timestamp_to_locations.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/database/migrations/2014_01_05_131401_add_price_field.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/database/migrations/2014_01_05_131654_alter_price_field.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/database/migrations/2014_01_05_162245_create_pages_table.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/database/migrations/2014_01_05_163017_create_posts_table.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/database/migrations/2014_01_06_052414_create_photo_field_on_contents_table.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/DashboardController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/custom.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/custom.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/admin/dashboard.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/public/home.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/admin/login.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/layouts/master.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/public/page.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/admin/properties/photos.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/public/sidebar.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/tables.css" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\controllers\GroupController.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\controllers\HomeController.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\controllers\SessionController.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\controllers\UserController.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\emails\auth\newpassword.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\emails\auth\reset.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\emails\auth\welcome.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\groups\create.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\groups\edit.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\groups\index.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\groups\show.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\home.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\sessions\login.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\users\create.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\users\edit.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\users\forgot.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\users\index.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\users\resend.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\users\show.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Erick\Documents\WebProjects\mean\app\views\users\suspend.blade.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/app/database/seeds/DatabaseSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/database.php" afterPath="$PROJECT_DIR$/app/config/database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/default.blade.php" afterPath="$PROJECT_DIR$/app/views/layouts/default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/filters.php" afterPath="$PROJECT_DIR$/app/filters.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/mail.php" afterPath="$PROJECT_DIR$/app/config/mail.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
+    </list>
+    <ignored path="mean.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <file path="/Dummy.txt" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1389063096595" ignored="false" />
+    <file path="/DashboardController.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388883565734" ignored="false" />
+    <file path="/default.blade.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388944557655" ignored="false" />
+    <file path="/routes.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388991798410" ignored="false" />
+    <file path="/login.blade.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388888349517" ignored="false" />
+    <file path="/filters.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388888517126" ignored="false" />
+    <file path="/2014_01_05_024750_create_developers_table.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388890152885" ignored="false" />
+    <file path="/index.blade.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388948133307" ignored="false" />
+    <file path="/DevelopersController.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388920993438" ignored="false" />
+    <file path="/create.blade.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388987335061" ignored="false" />
+    <file path="/custom.css" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388898622348" ignored="false" />
+    <file path="/2014_01_05_034510_update_developers_field.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388893554213" ignored="false" />
+    <file path="/Developer.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388926819762" ignored="false" />
+    <file path="/custom.js" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388937706167" ignored="false" />
+    <file path="/edit.blade.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388990060554" ignored="false" />
+    <file path="/show.blade.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388931711063" ignored="false" />
+    <file path="/TypesController.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388921207026" ignored="false" />
+    <file path="/LocationsController.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388921140962" ignored="false" />
+    <file path="/2014_01_05_064530_add_property_field.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388904464060" ignored="false" />
+    <file path="/dummy.txt" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388986618493" ignored="false" />
+    <file path="/2014_01_05_112923_update_properties_fields_table.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388921695002" ignored="false" />
+    <file path="/2014_01_05_113654_drop_created_column_properties.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388921860487" ignored="false" />
+    <file path="/PropertiesController.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388938058147" ignored="false" />
+    <file path="/Location.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388984851567" ignored="false" />
+    <file path="/2014_01_05_125458_add_timestamp_to_locations.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388926561888" ignored="false" />
+    <file path="/Type.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388926851589" ignored="false" />
+    <file path="/2014_01_05_131401_add_price_field.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388927787529" ignored="false" />
+    <file path="/Property.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388991080980" ignored="false" />
+    <file path="/photos.blade.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388938162949" ignored="false" />
+    <file path="/2014_01_05_162245_create_pages_table.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388939199150" ignored="false" />
+    <file path="/PostsController.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388990491510" ignored="false" />
+    <file path="/master.blade.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388946585094" ignored="false" />
+    <file path="/MainController.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388991758351" ignored="false" />
+    <file path="/home.blade.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388990967681" ignored="false" />
+    <file path="/Post.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388986753868" ignored="false" />
+    <file path="/sidebar.blade.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388986339001" ignored="false" />
+    <file path="/2014_01_06_052414_create_photo_field_on_contents_table.php" changelist="5025e359-fed4-4b05-9f74-70a0b04d94f9" time="1388986230433" ignored="false" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="mean" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="index.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/admin/posts/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="52" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/admin/posts/edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="106" selection-start="761" selection-end="761" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainController.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/MainController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="32" selection-start="691" selection-end="691" vertical-scroll-proportion="0.6149533">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="FrameworkCommandLineHistory">
+    <commandsHistory>
+      <command text="php artisan migrate:make update_properties_fields_table" />
+      <command text="php artisan migrate" />
+      <command text="php artisan migrate" />
+      <command text="php artisan migrate:make drop_created_column_properties" />
+      <command text="php artisan migrate" />
+      <command text="php artisan migrate:make add_timestamp_to_locations" />
+      <command text="php artisan migrate" />
+      <command text="php artisan migrate:make add_price_field" />
+      <command text="php artisan migrate" />
+      <command text="php artisan migrate:make alter_price_field" />
+      <command text="php artisan migreate" />
+      <command text="php artisan migrate" />
+      <command text="php artisan migrate:make create_pages_table" />
+      <command text="php artisan migrate" />
+      <command text="php artisan generate:scaffold posts --fields=&quot;title:string, body:content&quot; --path=views/admin/posts" />
+      <command text="php artisan migrate:make create_photo_field_on_contents_table" />
+      <command text="php artisan migrate" />
+      <command text="php artisan migrate" />
+      <command text="php artisan migrate" />
+      <command text="cd photos" />
+      <command text="dir" />
+      <command text="ls" />
+      <command text="cd photos" />
+      <command text="cd &quot;photos&quot;" />
+    </commandsHistory>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/app/models/Location.php" />
+        <option value="$PROJECT_DIR$/app/models/Developer.php" />
+        <option value="$PROJECT_DIR$/app/models/Type.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_01_06_052414_create_photo_field_on_contents_table.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_01_05_163017_create_posts_table.php" />
+        <option value="$PROJECT_DIR$/app/views/public/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/admin/posts/create.blade.php" />
+        <option value="$PROJECT_DIR$/app/controllers/PropertiesController.php" />
+        <option value="$PROJECT_DIR$/app/models/Post.php" />
+        <option value="$PROJECT_DIR$/app/views/admin/posts/edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/controllers/PostsController.php" />
+        <option value="$PROJECT_DIR$/app/views/public/home.blade.php" />
+        <option value="$PROJECT_DIR$/app/models/Property.php" />
+        <option value="$PROJECT_DIR$/app/views/public/page.blade.php" />
+        <option value="$PROJECT_DIR$/app/routes.php" />
+        <option value="$PROJECT_DIR$/app/controllers/MainController.php" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents ProjectPane="true" />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="photos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Erick\Documents\WebProjects\mean\app\views\public" />
+      <recent name="C:\Users\Erick\Documents\WebProjects\mean\app\views\layouts" />
+      <recent name="C:\Users\Erick\Documents\WebProjects\mean\app\views\admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Erick\Documents\WebProjects\mean\app\views\public" />
+      <recent name="C:\Users\Erick\Documents\WebProjects\mean\app\views\admin" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5025e359-fed4-4b05-9f74-70a0b04d94f9" name="Default" comment="" />
+      <created>1388882920020</created>
+      <updated>1388882920020</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="2">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33409092" sideWeight="0.79897785" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.083760686" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20102215" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
+    <option name="UPDATE_FILTER_SCOPE_NAME" />
+    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
+    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_01_05_163017_create_posts_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="4" selection-start="313" selection-end="313" vertical-scroll-proportion="0.6692607" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_01_06_052414_create_photo_field_on_contents_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="5" selection-start="192" selection-end="192" vertical-scroll-proportion="0.41897234" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/public/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="96" selection-start="743" selection-end="743" vertical-scroll-proportion="0.4789272" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/properties/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-5.578544" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/properties/photos.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="0" selection-start="3028" selection-end="3215" vertical-scroll-proportion="0.4789272" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/posts/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="52" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/PropertiesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="153" column="34" selection-start="3135" selection-end="3657" vertical-scroll-proportion="0.81386864" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/posts/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="26" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.66728973" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="27" selection-start="93" selection-end="254" vertical-scroll-proportion="-3.2692308" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/PostsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="49" selection-start="3016" selection-end="3016" vertical-scroll-proportion="0.5719626" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/posts/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="106" selection-start="761" selection-end="761" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Property.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="1" selection-start="3522" selection-end="3524" vertical-scroll-proportion="0.77757007" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/public/page.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="5" selection-start="302" selection-end="302" vertical-scroll-proportion="-6.5384617" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/public/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="0" selection-start="1942" selection-end="2028" vertical-scroll-proportion="0.70689654" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="0" selection-start="3658" selection-end="3658" vertical-scroll-proportion="0.8093458" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="32" selection-start="691" selection-end="691" vertical-scroll-proportion="0.6149533">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

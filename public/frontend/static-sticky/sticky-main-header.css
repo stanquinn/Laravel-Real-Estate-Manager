@@ -1,0 +1,4 @@
+@media (min-width: 800px) {
+	header {position: fixed; top: 0px; width: 100%;}
+	.root {margin-top: 98px;}
+}

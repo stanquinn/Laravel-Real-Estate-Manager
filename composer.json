@@ -4,7 +4,7 @@
 		"cartalyst/sentry": "2.0.*",
 		"mockery/mockery": "dev-master@dev",
 		"phpunit/phpunit": "3.7.*",
-		"barryvdh/laravel-dompdf": "dev-master"
+        "barryvdh/laravel-migration-generator": "dev-master"
 	},
 	"require-dev": {
 		"way/generators": "1.0.*@dev"

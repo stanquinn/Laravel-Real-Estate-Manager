@@ -4,7 +4,7 @@
 
 <h1>Show Location</h1>
 
-<p>{{ link_to_route('locations.index', 'Return to all locations') }}</p>
+<p>{{ link_to_route('admin.locations.index', 'Return to all locations') }}</p>
 
 <table class="table table-striped table-bordered">
 	<thead>
@@ -16,9 +16,9 @@
 	<tbody>
 		<tr>
 			<td>{{{ $location->name }}}</td>
-                    <td>{{ link_to_route('locations.edit', 'Edit', array($location->id), array('class' => 'btn btn-info')) }}</td>
+                    <td>{{ link_to_route('admin.locations.edit', 'Edit', array($location->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('locations.destroy', $location->id))) }}
+                        {{ Form::open(array('method' => 'DELETE', 'route' => array('admin.locations.destroy', $location->id))) }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>

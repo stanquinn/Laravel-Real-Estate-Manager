@@ -32,8 +32,7 @@
                 </div>
                 <div class="row" style="border-bottom:solid 1px #ccc; padding-bottom:10px; padding-top:10px;">
                     <div class="form-group col-lg-6">
-                        {{ Form::label('name', 'Agent:') }}<br>
-                        {{ $property->agent }}
+
                     </div>
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Price:') }}<br>

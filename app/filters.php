@@ -35,7 +35,41 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (!Sentry::check()) return Redirect::to('auth/login')->with('warning','Login Required.');
+	if (!Sentry::check()) 
+	{
+		return Redirect::to('auth/login')->with('warning','Login Required.');
+	}else{
+		if(!Sentry::getUser()->isSuperUser())
+		{
+			return Redirect::to('clients/logout')->with('warning','You must be logged in to access this page.');
+		}
+	}
+});
+
+Route::filter('client', function()
+{
+	if (!Sentry::check()) 
+	{
+		return Redirect::to('clients/login')->with('warning','Login Required.');
+	}else{
+		
+		if(Sentry::getUser()->isSuperUser())
+		{
+			Sentry::logout();
+			Session::flush();
+			return Redirect::to('clients/login')->with('warning','You must be logged in to access this page.');
+		}
+	}
+});
+
+Route::filter('client_logged_in', function()
+{
+	if (Sentry::check()) 
+	{
+		Sentry::logout();
+		Session::flush();
+		return Redirect::to('clients/login');
+	}
 });
 
 Route::filter('inGroup', function($route, $request, $value)

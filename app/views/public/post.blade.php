@@ -1,11 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.public')
 @section('content')
-<section class="content">
-    <article class="main">
-        <h1><?php echo ucwords($post->title);?></h1>
-        <?php echo $post->content;?>
-    </article>
-    @include('public.sidebar')
-    <a href="#top" class="go-top">Go to top of page</a>
-</section>
+    <div class="grid_8" id="left">
+        <h3 class="panel-title"><?php echo ucwords($post->title);?></h3>
+        <div class="post"><?php echo $post->content;?></div>
+    </div>
+@include('layouts.sidebar')    
 @stop

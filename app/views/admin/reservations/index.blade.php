@@ -4,8 +4,8 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Reservations <a class="add-button" href="{{ URL::to('admin/reservations/create') }}">Add Reservation</a></h3>
-                <input type="hidden" id="create_location" value="{{ URL::route('admin.reservations.create') }}"/>
+                <h3 class="panel-title">Reservations <a class="add-button" href="{{ URL::to('admin/clients/view/'.$user->id) }}">Back To Account</a></h3>
+              <style type="text/css">.DTTT_button { display: none !important; }</style>
             </div>
             <div class="panel-body">
                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="xdatatable" width="100%">
@@ -14,6 +14,7 @@
                             <th>ID</th>
                             <th>Property(Model Number)</th>
                             <th>Client Name</th>
+                            <th>Mobile</th>
                             <th>Terms</th>
                             <th>Unit Type</th>
                             <th></th>
@@ -24,13 +25,12 @@
                         <tr>
                             <td>{{ $p->id }}</td>
                             <td>{{ $p->property->model_number }}</td>
-                            <td>{{ $p->firstname }} {{ $p->lastname }}</td>
-                            <td>{{ $p->terms }}</td>
-                            <td>{{ $p->unit_type }}</td>
+                            <td>{{ $p->user->first_name }} {{ $p->user->last_name }}</td>
+                            <th>{{ $p->user->mobile }}
+                            <td>{{ ucwords($p->terms) }}</td>
+                            <td>{{ ucwords($p->unit_type) }}</td>
                             <td>
-                                <a href="{{ URL::to('admin/reservations/'.$p->id.'/edit') }}" class="btntable DTTT_button pull-left">Edit</a>
-                                <a href="{{ URL::to('admin/reservations/delete/'.$p->id) }}" class="btntable btn-delete DTTT_button pull-left">Delete</a>
-                                <a href="{{ URL::to('admin/reservations') }}/{{ $p->id }}" class="btntable DTTT_button pull-left">View</a>
+                                <a href="{{ URL::to('admin/clients/reservation') }}/{{ $p->id }}" class="btntable pull-left">View Information</a>
                             </td>
                         </tr>
                         @endforeach

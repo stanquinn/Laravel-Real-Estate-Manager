@@ -3,19 +3,28 @@
 class Transaction extends Eloquent {
 	protected $guarded = array();
 
+	protected $softDelete = true;
+
 	protected $appends = array('status_text');
 
 	public static $rules = array(
-		'reference_number' => 'required',
-		'property_id' => 'required|numeric',
-		'reservation_id' => 'numeric',
 		'status' => 'required',
-		'firstname'=>'required',
-		'lastname'=>'required',
-		'contact_number' => 'required',
-		'email' => 'required|email',
-		'address' => 'required|max:1000',
 	);
+
+	public function user()
+	{
+		return $this->belongsTo('User');
+	}
+
+	public function property()
+	{
+		return $this->belongsTo('Property');
+	}
+
+	public function reservation()
+	{
+		return $this->belongsTo('Reservation');
+	}
 
 	public function getStatusTextAttribute()
 	{

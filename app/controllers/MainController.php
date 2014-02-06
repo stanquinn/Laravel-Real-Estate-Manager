@@ -13,6 +13,8 @@ class MainController extends BaseController {
         $data['properties'] = Property::where('status',1)->orderBy('created_at','desc')->limit(3)->get();
         View::share('page_title','Homepage');
         View::share('sliders',Property::where('status',1)->orderBy(DB::raw('RAND()'))->limit(10)->get());
+        View::share('sidebar',true);
+        View::share('homepage',true);
         return View::make('public.home',$data);
     }
 
@@ -36,15 +38,37 @@ class MainController extends BaseController {
     }
     public function contact()
     {
-
-        $article = Post::find(5);
-        if(is_null($article)){ return App::abort('404'); }
-        View::share('page_title',$article->title);
-        View::share('article',$article);
+        $post = Post::find(5);
+        if(is_null($post)){ return App::abort('404'); }
+        View::share('page_title',$post->title);
+        View::share('post',$post);
         return View::make('public.contact'); 
     }
-    public function contact_post(){
-        
+    public function contact_post()
+    {
+        $rules = array(
+            'name' => 'required|alpha_num',
+            'email' => 'required|email',
+            'message' => 'required'
+        );
+        $validator = Validator::make(Input::all(),$rules);
+        if($validator->fails())
+        {
+            return Redirect::to('contact-us')->withInput()->withErrors($validator);
+        }else{
+
+            $admin_email = User::find(1)->email;
+            $data = array(
+                'from' => Input::get('name'),
+                'message' => Input::get('message'),
+                'email' => Input::get('email')
+            );
+            Mail::send('mails.contact', $data, function($message) use($admin_email)
+            {
+                $message->to($admin_email, 'Live and Love')->subject('Contact Inquiry');
+            });
+            return Redirect::to('contact-us')->with('success','Message Sent!');
+        }
     }
     public function article($id)
     {

@@ -7,6 +7,8 @@ class Location extends Eloquent {
 		'name' => 'required|unique:locations,name'
 	);
 
+    protected $softDelete = true;
+
     public function properties()
     {
         return $this->hasMany('Property');
@@ -22,10 +24,16 @@ class Location extends Eloquent {
         if($property->count() > 0){ return true; }else{ return false;}
     }
 
-    public static function dropdown()
+    public static function dropdown($novalue = null)
     {
         $locations = Location::orderBy('name')->get();
         $array = [];
+        if($novalue)
+        {
+            $array = array(
+                '' => 'Any'
+            );
+        }
         foreach($locations as $l)
         {
             $key = $l->id;

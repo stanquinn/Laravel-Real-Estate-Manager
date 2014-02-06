@@ -15,7 +15,7 @@ Route::group(array('before' => 'auth','prefix' => 'admin'), function()
     Route::resource('developers', 'DevelopersController');
     Route::resource('types', 'TypesController');
     Route::resource('locations', 'LocationsController');
-
+    Route::get('properties/{id}/delete','PropertiesController@destroy');
     Route::get('properties/photos',function(){ return Redirect::to('admin/properties');});
     Route::get('properties/{id}/photos','PropertiesController@photos');
     Route::post('properties/{id}/photos','PropertiesController@photos_post');
@@ -31,6 +31,27 @@ Route::group(array('before' => 'auth','prefix' => 'admin'), function()
     Route::post('transactions/{id}/update','TransactionsController@update');
     Route::get('reservations/delete/{id}','ReservationsController@delete');
     Route::get('transactions/invoice/{id}','TransactionsController@invoice'); 
+
+    Route::get('clients','ClientsController@main');
+    Route::get('clients/create','ClientsController@create');
+    Route::post('clients/create','ClientsController@create_post');
+
+    Route::get('clients/update/{id}','ClientsController@update');
+    Route::patch('clients/update/{id}','ClientsController@update_post');
+
+    Route::get('clients/suspend/{id}','ClientsController@suspend');
+    Route::get('clients/delete/{id}','ClientsController@delete');
+    Route::get('clients/view/{id}','ClientsController@view');
+    Route::get('clients/reservations/{id}','ClientsController@reservations');
+    Route::get('clients/transactions/{id}','ClientsController@transactions');
+
+    Route::get('clients/reservation/{id}','ClientsController@reservation');
+    Route::get('clients/transaction/{id}','ClientsController@transaction');
+
+    Route::resource('agents', 'AgentsController');
+    Route::get('agents/delete/{id}','AgentsController@delete');
+    Route::get('agents/commissions/{id}','AgentsController@commissions');
+
 });
 
 Route::get('auth/logout',function(){
@@ -40,7 +61,7 @@ Route::get('auth/logout',function(){
 });
 Route::get('auth/login',function(){
     if(Sentry::check()){
-        return Redirect::to('admin/dashboard');
+        return Redirect::to('admin');
     }else{
         return View::make('admin.login',array('page_title' => 'Login'));
     }
@@ -101,6 +122,7 @@ Route::get('about-us','MainController@about');
 Route::get('services','MainController@services');
 Route::get('news','MainController@news');
 Route::get('contact-us','MainController@contact');
+Route::post('contact-us','MainController@contact_post');
 Route::get('article/{id}','MainController@article');
 
 Route::group(array('prefix' => 'properties'), function()
@@ -109,6 +131,31 @@ Route::group(array('prefix' => 'properties'), function()
     Route::get('item/{id}','PropertyController@item');
     Route::post('item/{id}',array('uses' => 'PropertyController@item_post','before' => 'csrf'));
     Route::get('search','PropertyController@search');
-    Route::get('reserve/{id}','PropertyController@reserve');
-    Route::post('reserve/{id}',array('uses' => 'PropertyController@reserve_post','before' => 'csrf'));
 });
+
+// Administration Routes
+Route::group(array('before' => 'client','prefix' => 'clients'), function()
+{
+    // RESERVATIONS
+    Route::get('/','PublicClientsController@main');    
+    Route::get('reserve/{id}','PublicClientsController@reserve'); 
+    Route::post('reserve/{id}','PublicClientsController@reserve_post'); 
+    Route::get('profile','PublicClientsController@profile'); 
+    Route::patch('profile','PublicClientsController@profile_post');
+    Route::get('reservation/{id}','PublicClientsController@reservation');
+    Route::get('invoice/{id}','PublicClientsController@invoice');
+});
+// Administration Routes
+Route::group(array('before' => 'client_not_logged_in','prefix' => 'clients'), function()
+{
+    Route::get('login','PublicClientsController@login'); 
+    Route::post('login','PublicClientsController@login_post');
+    Route::get('register','PublicClientsController@register'); 
+    Route::post('register','PublicClientsController@register_post');
+    Route::get('forgot-password','PublicClientsController@forgot');
+    Route::post('forgot-password', array('before' => 'crsf', 'uses' => 'PublicClientsController@forgot_post'));
+    Route::get('password-reset/{id}/{code}', 'PublicClientsController@password_reset');
+    Route::get('activate/{id}/{code}','PublicClientsController@activate'); 
+});
+
+Route::get('clients/logout','PublicClientsController@logout'); 

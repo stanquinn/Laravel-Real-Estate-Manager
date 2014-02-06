@@ -1,0 +1,53 @@
+   <div class="grid_8" id="left">
+                <h3 class="panel-title">Latest Properties</h3>
+                <ul class="item-list">
+                    <li>
+                        <img src="img/thumb.jpg" class="item-thumb">
+                        <h4 class="property-title">Alexandria <span class="property-price"> - $479,000.00</span></h4>
+                        <p class="property-meta">Location: Pasig | Beds: 2 | Baths: 2 </p>
+                        <p class="property-excerpt">One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is a. One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is.</p>
+                        <a class="property-link" href="#">View Property</a>
+                        <div style="clear:both;"></div>
+                    </li>
+                    <li>
+                        <img src="img/thumb.jpg" class="item-thumb">
+                        <h4 class="property-title">Alexandria <span class="property-price"> - $479,000.00</span></h4>
+                        <p class="property-meta">Location: Pasig | Beds: 2 | Baths: 2 </p>
+                        <p class="property-excerpt">One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is a. One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is.</p>
+                        <a class="property-link" href="#">View Property</a>
+                        <div style="clear:both;"></div>
+                    </li>
+                    <li>
+                        <img src="img/thumb.jpg" class="item-thumb">
+                        <h4 class="property-title">Alexandria <span class="property-price"> - $479,000.00</span></h4>
+                        <p class="property-meta">Location: Pasig | Beds: 2 | Baths: 2 </p>
+                        <p class="property-excerpt">One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is a. One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is.</p>
+                        <a class="property-link" href="#">View Property</a>
+                        <div style="clear:both;"></div>
+                    </li>
+                    <li>
+                        <img src="img/thumb.jpg" class="item-thumb">
+                        <h4 class="property-title">Alexandria <span class="property-price"> - $479,000.00</span></h4>
+                        <p class="property-meta">Location: Pasig | Beds: 2 | Baths: 2 </p>
+                        <p class="property-excerpt">One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is a. One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is.</p>
+                        <a class="property-link" href="#">View Property</a>
+                        <div style="clear:both;"></div>
+                    </li>
+                    <li>
+                        <img src="img/thumb.jpg" class="item-thumb">
+                        <h4 class="property-title">Alexandria <span class="property-price"> - $479,000.00</span></h4>
+                        <p class="property-meta">Location: Pasig | Beds: 2 | Baths: 2 </p>
+                        <p class="property-excerpt">One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is a. One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is.</p>
+                        <a class="property-link" href="#">View Property</a>
+                        <div style="clear:both;"></div>
+                    </li>
+                    <li>
+                        <img src="img/thumb.jpg" class="item-thumb">
+                        <h4 class="property-title">Alexandria <span class="property-price"> - $479,000.00</span></h4>
+                        <p class="property-meta">Location: Pasig | Beds: 2 | Baths: 2 </p>
+                        <p class="property-excerpt">One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is a. One of the most unique properties in the Lakes Region has now come on the market. Hearthstone is.</p>
+                        <a class="property-link" href="#">View Property</a>
+                        <div style="clear:both;"></div>
+                    </li>
+                </ul>
+            </div>

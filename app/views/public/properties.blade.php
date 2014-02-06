@@ -1,23 +1,20 @@
-@extends('layouts.master')
+@extends('layouts.public')
 @section('content')
-<section class="content">
-	<h3>Available Properties <span class="advance-search-link"></a></h3> 
-	<div style="clear:both;"></div>
-	<section class="columns">
-		@foreach($properties as $p)                  
-		<article class="property_column post">
-			<div style="padding:10px; border: 1px solid #ccc; text-align:center;">
-				<a href="{{ $p->permalink }}"><img src="{{ Property::primary_photo($p->id,array(232,150)) }}"/></a>
-				<div style="padding-top:10px;">
-					<a href="{{ $p->permalink }}"><h4 class="property_title">{{ ucwords($p->name) }}</h4></a>
-					<span class="property_price">&#8369;{{ number_format($p->price,2) }}</span><br>
-					<span class="property_location"><strong>Location:</strong> {{ ucwords($p->location->name) }}</span>
-				</div>
-			</div>
-	    </article>  
-	    @endforeach
-	</section>
-	<div class="custom_pagination">{{ $properties->links() }}</div>
-<a href="#top" class="go-top">Go to top of page</a>
-</section>
+    <div class="grid_8" id="left">
+        <h3 class="panel-title">All Properties</h3>
+        <ul class="item-list">
+            @foreach($properties as $p)
+            <li>
+                <img src="{{ Property::primary_photo($p->id,array(100,100)) }}" class="item-thumb">
+                <h4 class="property-title"><a href="{{ $p->permalink }}"><?php echo ucwords($p->name);?></a> <span class="property-price"> - &#8369;<?php echo number_format($p->price,2);?></span></h4>
+                <p class="property-meta">Location: {{ ucwords($p->location->name) }} | Beds: {{ $p->beds }} | Baths: {{ $p->baths }} </p>
+                <p class="property-excerpt">{{ Str::limit(strip_tags($p->description),257)}}</p>
+                <a class="property-link" href="{{ $p->permalink }}">View Property</a>
+                <div style="clear:both;"></div>
+            </li>
+            @endforeach
+        </ul>
+        {{ $properties->appends($appends)->links() }}
+    </div>
+@include('layouts.sidebar')    
 @stop

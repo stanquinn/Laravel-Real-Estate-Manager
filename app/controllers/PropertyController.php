@@ -15,33 +15,49 @@ class PropertyController extends BaseController
 	public function main()
 	{
 		View::share('page_title','Properties');
-		$data['appends'] = array_except(Input::all(),array('page','submit'));
-		$data['properties'] = new Property;
-		$data['properties']->where('status',1);
-		$data['properties']->orderBy('created_at','desc');
-
-		foreach($data['appends'] as $k => $v)
+		$appends = array_except(Input::all(),array('page','submit'));
+		$properties = new Property;
+		$properties = $properties->where('status','=',1);
+		$properties = $properties->orderBy('created_at','desc');			
+		foreach($appends as $k => $v)
 		{
 			switch($k)
 			{
 				case 'location':
-					$data['properties']->where('location_id',Input::get('location'));
+					if(Input::get('location') != '')
+						$properties = $properties->where('location_id',Input::get('location'));
 				break;
 
 				case 'type':
-					$data['properties']->where('type_id',Input::get('type'));
+					if(Input::get('type') != '')
+						$properties = $properties->where('type_id',Input::get('type'));
 				break;
 
-				case 's':
-					$data['properties']->where('name', 'LIKE','%'.Input::get('s').'%');
-					$data['properties']->where('model_number', 'LIKE','%'.Input::get('s').'%');
+				case 'developer':
+					if(Input::get('developer') != '')
+						$properties = $properties->where('developer_id',Input::get('developer'));
 				break;
+
+				case 'beds':
+					if(Input::get('beds') != '' || Input::get('beds') != 0)
+						$properties = $properties->where('beds',Input::get('beds'));
+				break;
+
+				case 'baths':
+					if(Input::get('baths') != '' || Input::get('baths') != 0)
+						$properties = $properties->where('baths',Input::get('baths'));
+				break;
+
+				case 'min':
+					if(Input::get('min') < Input::get('max'))
+						$properties = $properties->whereBetween('price',array(intval(Input::get('min')),intval(Input::get('max'))));
+				break;
+
 			}
 		}
-
-		$data['properties'] = $data['properties']->paginate(24);
-
-		return View::make('public.properties',$data);
+		$properties = $properties->paginate(12);
+		//dd(DB::getQueryLog());
+		return View::make('public.properties',compact('properties','appends'));
 	}
 	public function search(){
 
@@ -52,6 +68,7 @@ class PropertyController extends BaseController
 
 		$property = Property::find($id);
 		if(is_null($property)){ return App::abort(404); }
+		if($property->status == 0){ return App::abort(404); }
 		$data['reservation_button'] = $id;
 		$data['property'] = $property;
 		$data['gallery'] = Property::gallery($id,array(100,100),array(800,600));

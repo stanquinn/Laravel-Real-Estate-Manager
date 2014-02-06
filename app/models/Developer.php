@@ -3,6 +3,8 @@
 class Developer extends Eloquent {
 	protected $guarded = array();
 
+    protected $softDelete = true;
+
 	public static $rules = array(
 		'name' => 'required|unique:developers,name',
         'email'=> 'required|email|unique:developers,email'
@@ -25,10 +27,17 @@ class Developer extends Eloquent {
         if($property->count() > 0){ return true; }else{ return false;}
     }
 
-    public static function dropdown()
+    public static function dropdown($novalue = null)
     {
         $locations = Developer::orderBy('name')->get();
-        $array = [];
+         $array = [];
+        if($novalue)
+        {
+            $array = array(
+                '' => 'Any'
+            );
+        }
+       
         foreach($locations as $l)
         {
             $key = $l->id;

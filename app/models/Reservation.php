@@ -3,17 +3,9 @@
 class Reservation extends Eloquent {
 	protected $guarded = array();
 
+    protected $softDelete = true;
+
 	public static $rules = array(
-		'firstname'         => 'required|max:50',
-        'lastname'          => 'required|max:50',
-        'home_address'      => 'required|max:500',
-        'work_address'      => 'max:500',
-        'phone'             => 'max:12|min:7',
-        'mobile'            => 'max:13|min:11',
-        'email'             => 'email|required',
-        'work'              => 'max:100|min:2',
-        'tin_number'        => 'max:25|min:5',
-        'company'           => 'max:100|min:2',
         'terms'             => 'max:100|min:2|required',
         'unit_type'         => 'max:100|min:2|required'
 	);
@@ -21,6 +13,16 @@ class Reservation extends Eloquent {
     public function property()
     {
         return $this->belongsTo('Property');
+    }
+
+    public function agent()
+    {
+        return $this->belongsTo('Agent');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('User');
     }
 
     public static function dropdown()

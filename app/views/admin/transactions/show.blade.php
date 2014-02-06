@@ -21,7 +21,7 @@
     </tr>
     <tr>
         <td style="none;border-collapse: collapse;padding: 10px;">
-              <p style="line-height: 24px;"><strong>Customer: {{ $transaction->firstname }} {{ $transaction->lastname }}</strong><br>{{ nl2br($transaction->address) }}</p>
+              <p style="line-height: 24px;"><strong>Customer: {{ $transaction->user->first_name }} {{ $transaction->user->last_name }}</strong><br>{{ nl2br($transaction->user->work_address) }}</p>
         </td>
         <td style="none; border-collapse: collapse;padding: 10px; text-align:right;">
               <p style="line-height: 24px;"><strong>Invoice Number #</strong>: {{ $transaction->reference_number }}<br>
@@ -36,6 +36,7 @@
     
       <tr>
           <th style="border: 1px solid black;border-collapse: collapse;padding: 10px;background-color: #000;color: white;">Item</th>
+          <th style="border: 1px solid black;border-collapse: collapse;padding: 10px;background-color: #000;color: white;">Model</th>
           <th style="border: 1px solid black;border-collapse: collapse;padding: 10px;background-color: #000;color: white;">Description</th>
           <th style="border: 1px solid black;border-collapse: collapse;padding: 10px;background-color: #000;color: white;">Unit Cost</th>
           <th style="border: 1px solid black;border-collapse: collapse;padding: 10px;background-color: #000;color: white;">Quantity</th>
@@ -45,6 +46,7 @@
           <td style="border: 1px solid black;border-collapse: collapse;padding: 10px;">
               {{ $transaction->reference_number }}
           </td>
+           <td style="border: 1px solid black;border-collapse: collapse;padding: 10px;">{{ $property->model_number }} - {{ $property->name }} </td>
           <td style="border: 1px solid black;border-collapse: collapse;padding: 10px;">{{ $transaction->remarks }}</td>
           <td style="border: 1px solid black;border-collapse: collapse;padding: 10px;">Php{{ number_format($transaction->amount,2) }}</td>
           <td style="border: 1px solid black;border-collapse: collapse;padding: 10px;">1</td>
@@ -54,8 +56,19 @@
           <h3 align="right"><strong>Total Amount: Php{{ number_format($transaction->amount,2) }}</strong></h3>
       </div>
       <br>
-      <div class="rule" style="background-color: #000; line-height:30px;font-size: 24px;display: block;text-align: center;color: #FFF;text-transform: uppercase;margin-bottom: 25px;">Notes</div>
-      <p style="line-height: 24px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus odio nisl, convallis rutrum molestie sit amet, elementum nec tellus. Ut non ligula sit amet massa laoreet scelerisque. Maecenas augue nibh, laoreet et gravida sed, lacinia eget est. Nam nec adipiscing quam, vel elementum nunc.</p> 
+      <div class="rule" style="background-color: #000; line-height:30px;font-size: 24px;display: block;text-align: center;color: #FFF;text-transform: uppercase;margin-bottom: 25px;">Billing Information</div>
+      <p style="line-height: 24px;">
+Account Holder : John Dave Decano<br>
+Account Holder Address: 144-3 West Bank Floodway Maybunga Pasig City Philippines 1607<br>
+Account Holder Telephone: 639469026992<br>
+Bank Name: UNION BANK OF THE PHILIPPINES<br>
+Bank Branch: Union Bank Plaza Ortigas Pasig City<br>
+Bank Address: UnionBank Plaza Bldg., Meralco Ave. corner Onyx St. Ortigas Pasig City Philippines 1605<br>
+Bank Telephone: 1-800-1888-2277*<br>
+Bank Account Number: 109452024675<br>
+Bank Swift Code: 010419995<br>
+Currency: Philippine Peso
+      </p> 
   </div>
   <div style="clear:both;"></div>
 </div>

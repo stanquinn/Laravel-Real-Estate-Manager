@@ -3,6 +3,8 @@
 class Type extends Eloquent {
 	protected $guarded = array();
 
+    protected $softDelete = true;
+
 	public static $rules = array(
 		'name' => 'required|unique:types,name'
 	);
@@ -19,10 +21,16 @@ class Type extends Eloquent {
         $property = Property::where('type_id','=',$id);
         if($property->count() > 0){ return true; }else{ return false;}
     }
-    public static function dropdown()
+    public static function dropdown($novalue = null)
     {
         $locations = Type::orderBy('name')->get();
         $array = [];
+        if($novalue)
+        {
+            $array = array(
+                '' => 'Any'
+            );
+        }
         foreach($locations as $l)
         {
             $key = $l->id;

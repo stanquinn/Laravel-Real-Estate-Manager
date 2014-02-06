@@ -2,6 +2,7 @@
 
 class Property extends Eloquent {
 	protected $guarded = array();
+    protected $softDelete = true;
     protected $appends = array('stats','cover','permalink');
 	public static $rules = array(
         'location_id'   => 'numeric|required',
@@ -9,7 +10,6 @@ class Property extends Eloquent {
         'type_id'       => 'numeric|required',
         'name'          => 'required|min:8',
         'model_number'  => 'required',
-        'agent'         => 'required',
         'beds'          => 'required|numeric',
         'baths'         => 'required|numeric',
         'lot'           => 'required|numeric',

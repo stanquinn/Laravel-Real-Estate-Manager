@@ -151,6 +151,7 @@ class Image_Cache {
       if (DEBUGPNG) print "[clear unlink $file]";
       unlink($file);
     }
+	 self::$_cache=array();//changed
   }
   
   static function detect_type($file) {

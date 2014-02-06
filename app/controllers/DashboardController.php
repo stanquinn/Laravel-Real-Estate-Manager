@@ -12,6 +12,7 @@ class DashboardController extends BaseController
 
     public function main(){
         View::share('page_title','Dashboard');
-        return View::make('admin.dashboard');
+		$reservations = Reservation::orderBy('created_at','desc')->get();
+		return View::make('admin.reservations.dashboard', compact('reservations'));
     }
 }

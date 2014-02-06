@@ -139,7 +139,7 @@ class TransactionsController extends BaseController {
 			$transaction = $this->transaction->find($id);
 			$transaction->update($input);
 
-			return Redirect::route('admin.transactions.edit', $id);
+			return Redirect::route('admin.transactions.edit', $id)->with('success','Transaction has been updated');
 		}
 
 		return Redirect::route('admin.transactions.edit', $id)

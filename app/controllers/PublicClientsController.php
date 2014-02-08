@@ -251,12 +251,13 @@ class PublicClientsController extends BaseController
             $data['user'] = $user;
             $data['password'] = $user->password;
             // Send activation code to the user so he can activate the account
-            Mail::send('mails.activation', $data, function($message) use ($user,$password)
+            Mail::send('mails.activation', $data, function($message) use ($user)
             {
                 $message->from('no-reply@liveandlove.com', 'Live and Love');
                 $message->to($user->email)->subject("Account Activation Notice");
             });
 
+            return Redirect::to('clients/register')->with('success','Registration successfull. Please check your email for confirmation.');
 		}
 	}
 

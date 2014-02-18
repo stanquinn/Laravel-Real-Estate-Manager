@@ -21,6 +21,10 @@
                     <td width="69%">{{ $agent->phone }}</td>
                   </tr>
                   <tr>
+                    <td style="background-color:#333; color:white; width:30%;">Current Commissions/Earnings</td>
+                    <td width="69%">{{ number_format($agent->earnings,2) }}</td>
+                  </tr>
+                  <tr>
                     <td style="background-color:#333; color:white; width:30%;">Created Date</td>
                     <td width="69%">{{ $agent->created_at->format("F j,Y") }}</td>
                   </tr>

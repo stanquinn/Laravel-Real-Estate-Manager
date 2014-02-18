@@ -40,11 +40,11 @@
             </tr>
             <tr>
                 <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Work Address:</td>
-                <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ $reservation->user->work_address }}</td>
+                <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ join(" ",json_decode($reservation->user->work_address)) }}</td>
             </tr>
             <tr>
                 <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Home Address:</td>
-                <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ $reservation->user->home_address }}</td>
+                <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ join(" ",json_decode($reservation->user->home_address)) }}</td>
             </tr>
             <tr>
                 <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Company:</td>
@@ -92,10 +92,6 @@
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ $property->lot_area }}</td>
             </tr>
             <tr>
-                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Reservation Fee:</td>
-                <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ $property->reservation_fee }}</td>
-            </tr>
-            <tr>
                 <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Total Contract Price:</td>
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">Php{{ number_format($property->price,2) }}</td>
             </tr>
@@ -104,11 +100,15 @@
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">Php{{ number_format($property->reservation_fee,2) }}</td>
             </tr>
             <tr>
+                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Equity:</td>
+                <td width="83%" style="none;border-collapse: collapse;padding: 5px;">Php{{ number_format($property->equity,2) }}</td>
+            </tr>
+            <tr>
                 <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Downpayment:</td>
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">Php{{ number_format($reservation->downpayment,2) }}</td>
             </tr>
             <tr>
-                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Equity:</td>
+                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Loanable Amount:</td>
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">Php{{ number_format($reservation->equity,2) }}</td>
             </tr>
             <tr>
@@ -118,10 +118,6 @@
             <tr>
                 <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Monthly Fee:</td>
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">Php{{ number_format($reservation->monthly_fee,2) }}</td>
-            </tr>
-            <tr>
-                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Unit Type:</td>
-                <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ ucwords($reservation->unit_type) }}</td>
             </tr>
             <tr>
                 <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:#fff; color:#000; font-weight:bold;">Terms:</td>

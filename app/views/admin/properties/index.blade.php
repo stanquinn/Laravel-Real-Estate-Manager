@@ -31,7 +31,7 @@
                         <td>{{ $property->stats }}</td>
                         <td>
                             <a href="{{ URL::to('admin/properties/'.$property->id.'/photos') }}" class="btntable DTTT_button pull-left">Photos</a>
-                            <a href="{{ URL::to('admin/properties/'.$property->id.'/computation') }}" class="btntable DTTT_button pull-left">Computation</a>
+                            <!--<a href="{{ URL::to('admin/properties/'.$property->id.'/computation') }}" class="btntable DTTT_button pull-left">Computation</a>-->
                             <a href="{{ URL::to('admin/properties/'.$property->id.'/edit') }}" class="btntable DTTT_button pull-left">Edit</a>
                             <a href="{{ URL::to('admin/properties/'.$property->id.'/delete') }}" class="btntable btn-delete DTTT_button pull-left">Delete</a>
                             <a href="{{ URL::to('admin/properties') }}/{{ $property->id }}" class="btntable DTTT_button pull-left">View</a>

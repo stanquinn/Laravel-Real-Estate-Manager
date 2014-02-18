@@ -14,7 +14,11 @@
         		@foreach($reservations as $reservation)
         		<tr>
         			<td>{{ $reservation->property->model_number }}</td>
-        			<td>{{ $reservation->agent->first_name }} {{ $reservation->agent->last_name }}</td>
+        			<td>
+                        @if($reservation->agent)
+                        {{ $reservation->agent->first_name }} {{ $reservation->agent->last_name }}
+                        @endif
+                    </td>
         			<td>{{ $reservation->created_at->format("F j,Y") }}</td>
         			<td>
         				<a href="{{ URL::to('clients/reservation/'.$reservation->id) }}">More Info</a>

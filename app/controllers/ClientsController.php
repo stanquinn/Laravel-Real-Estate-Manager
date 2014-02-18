@@ -29,8 +29,8 @@ class ClientsController extends BaseController
 		    	'tin_number'	=> Input::get('tin_number'),
 		    	'landline'		=> Input::get('landline'),
 		    	'mobile'		=> Input::get('mobile'),
-		    	'work_address'	=> Input::get('work_address'),
-		    	'home_address'	=> Input::get('home_address'),
+		    	'work_address'	=> json_endcode(explode(",",Input::get('work_address'))),
+		    	'home_address'	=> json_endcode(explode(",",Input::get('home_address'))),
 		    	'company'		=> Input::get('company'),
 		    	'occupation'	=> Input::get('occupation'),
 		        'email'       	=> Input::get('email'),
@@ -66,8 +66,8 @@ class ClientsController extends BaseController
 		    	$user->tin_number	= Input::get('tin_number');
 		    	$user->landline		= Input::get('landline');
 		    	$user->mobile		= Input::get('mobile');
-		    	$user->work_address	= Input::get('work_address');
-		    	$user->home_address	= Input::get('home_address');
+		    	$user->work_address	= json_endcode(explode(",",Input::get('work_address')));
+		    	$user->home_address	= json_endcode(explode(",",Input::get('home_address')));
 		    	$user->company		= Input::get('company');
 		    	$user->occupation	= Input::get('occupation');
 		        $user->email      	= Input::get('email');
@@ -105,7 +105,9 @@ class ClientsController extends BaseController
 	{
 		$this->_exists($id);
 		$user = $this->user->find($id);
-		$user->delete();
+		$user->deleted_at = date("Y-m-d H:i:s");
+		$user->email = date("YmdHis").'@puke.ph';
+		$user->save();
 		return Redirect::to('admin/clients')->with('success','Client account has been successfully deleted.');
 	}
 	private function _exists($id)

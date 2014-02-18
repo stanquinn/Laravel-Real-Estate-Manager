@@ -32,7 +32,19 @@ $(document).ready(function() {
         if(c){
             var i = jQuery(this).attr('data-property');
             var p = jQuery(this).attr('data-file');
-            window.location = '/admin/properties/photos/delete?property_id='+i+'&photo='+p;
+            window.location = '/admin/delete_photo?property_id='+i+'&photo='+p;
         }
+    });
+   jQuery('.action').change(function(){
+        var action =jQuery(this).val();
+        if(action == 'add')
+        {
+           jQuery('.prop').show();
+        }
+        if(action == 'deduct')
+        {
+           jQuery('.prop').hide();
+        }
+        console.log(action);
     });
 } );

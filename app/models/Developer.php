@@ -6,8 +6,8 @@ class Developer extends Eloquent {
     protected $softDelete = true;
 
 	public static $rules = array(
-		'name' => 'required|unique:developers,name',
-        'email'=> 'required|email|unique:developers,email'
+		'name' => 'required',
+        'email'=> 'required',
 	);
     public function properties()
     {
@@ -16,8 +16,8 @@ class Developer extends Eloquent {
     public static function update_rules($id)
     {
         return array(
-            'name' => 'required|unique:developers,name,'.$id,
-            'email'=> 'required|email|unique:developers,email,'.$id
+            'name' => 'required',
+            'email'=> 'required',
         );
     }
 
@@ -30,7 +30,7 @@ class Developer extends Eloquent {
     public static function dropdown($novalue = null)
     {
         $locations = Developer::orderBy('name')->get();
-         $array = [];
+         $array = array();
         if($novalue)
         {
             $array = array(

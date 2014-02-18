@@ -10,7 +10,6 @@
 | your classes in the "global" namespace without Composer updating.
 |
 */
-
 ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
@@ -75,3 +74,8 @@ require __DIR__.'/../libraries/dompdf/dompdf_config.inc.php';
 |--------------------------------------------------------------------------
 */
 $app['Cartalyst\Sentry\Sentry'] = $app['sentry'];
+
+Validator::resolver(function($translator, $data, $rules, $messages)
+{
+    return new CustomValidator($translator, $data, $rules, $messages);
+});

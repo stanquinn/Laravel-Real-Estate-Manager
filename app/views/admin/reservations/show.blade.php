@@ -56,10 +56,6 @@
                 <td>Terms</td>
                 <td>{{ $reservation->terms }}</td>
               </tr>
-              <tr>
-                <td>Unit Type</td>
-                <td>{{ $reservation->unit_type }}</td>
-              </tr>
             </table>
               <div style="clear:both;"></div>
             </div>

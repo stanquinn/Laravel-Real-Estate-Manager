@@ -139,4 +139,86 @@ class AgentsController extends BaseController {
 		return View::make('admin.commissions.list',compact('commissions','agent'));
 	}
 
+	public function give_commission($id)
+	{
+		if(is_null(Agent::find($id))){ return Redirect::to('admin');}
+
+		$agent = Agent::find($id);
+
+		return View::make('admin.commissions.give',compact('agent'));
+	}
+
+	public function give_commission_post($id)
+	{
+		if(is_null(Agent::find($id))){ return Redirect::to('admin');}
+
+		$agent = Agent::find($id);
+
+		$action = Input::get('action');
+
+		if($action == 'deduct')
+		{
+			$rules = array(
+				'action'  => 'required',
+				'remarks' => 'required',
+				'amount' => 'required|numeric'
+			);
+
+			$validator = Validator::make(Input::all(),$rules);
+
+			if($validator->passes())
+			{
+				$commissions = new Commission;
+				$commissions->user_id = Input::get('user_id');
+				$commissions->property_id = Input::get('property_id');
+				$commissions->agent_id = $agent->id;
+				$commissions->action = 'deduct';
+				$commissions->remarks = Input::get('remarks');
+				$commissions->amount = Input::get('amount');
+				$commissions->save();
+
+				// AGENT COMMISSION
+				if($agent->earnings > 0)
+				{
+					$agent->earnings = $agent->earnings - Input::get('amount');
+					$agent->save();
+				}
+				return Redirect::to('admin/agents/commissions/'.$id)->with('success','Commission has been added.');
+			}else{
+				return Redirect::to('admin/give_commission/'.$id)->withErrors($validator)->withInput();
+			}
+		}
+		elseif($action == 'add')
+		{
+			$rules = array(
+				'user_id' => 'required|numeric|exists:users,id',
+				'property_id' => 'required|numeric|exists:properties,id',
+				'action'  => 'required',
+				'remarks' => 'required',
+				'amount' => 'required|numeric'
+			);
+
+			$validator = Validator::make(Input::all(),$rules);
+
+			if($validator->passes())
+			{
+				$commissions = new Commission;
+				$commissions->user_id = Input::get('user_id');
+				$commissions->property_id = Input::get('property_id');
+				$commissions->agent_id = $agent->id;
+				$commissions->action = 'add';
+				$commissions->remarks = Input::get('remarks');
+				$commissions->amount = Input::get('amount');
+				$commissions->save();
+
+				// AGENT COMMISSION
+				$agent->earnings = $agent->earnings + Input::get('amount');
+				$agent->save();
+
+				return Redirect::to('admin/agents/commissions/'.$id)->with('success','Commission has been added.');
+			}else{
+				return Redirect::to('admin/give_commission/'.$id)->withErrors($validator)->withInput();
+			}
+		}
+	}
 }

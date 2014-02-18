@@ -48,11 +48,11 @@
                 <div class="form-group row">
                     <div class="col-lg-6">
                         {{ Form::label('', 'Work Address:') }}
-                        {{ Form::text('work_address',null,array('class' => 'form-control')) }}
+                        {{ Form::text('work_address',join(" ",json_decode($client->work_address)),array('class' => 'form-control')) }}
                     </div>
                     <div class="col-lg-6">
                         {{ Form::label('', 'Home Address:') }}
-                        {{ Form::text('home_address',null,array('class' => 'form-control')) }}
+                        {{ Form::text('home_address',join(" ",json_decode($client->home_address)),array('class' => 'form-control')) }}
                     </div> 
                 </div>
                 <div class="form-group row">

@@ -12,6 +12,7 @@
     <script type="text/javascript" src="{{ URL::to('public/js/fancybox/jquery.mousewheel-3.0.6.pack.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('public/js/fancybox/jquery.fancybox.js') }}"></script>
     <script src="{{ URL::to('public/js/numeral.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('public/js/notify.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('public/js/scripts.js') }}"></script>
 </head>
 <body>

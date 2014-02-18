@@ -4,8 +4,9 @@
         <h3 class="panel-title">{{ $property->name }}</h3>
         <div class="item">
             <div class="item-main-image half">
-                <img src="{{ Property::primary_photo($property->id,array(291,190)) }}"/>
-                <button type="submit" class="search-button button-yellow reserve" onclick="window.location = '{{ URL::to('clients/reserve/'.$property->id) }}'">Reserve This Property</button>
+                <img src="{{ Property::primary_photo($property->id,array(291,210)) }}"/>
+                <button type="submit" class="search-button button-yellow reserve" onclick="window.location = '{{ URL::to('clients/reserve/'.$property->id) }}'" style="width:48%;">Reserve Property</button>
+                <button type="submit" class="search-button button-yellow reserve" onclick="window.location = '{{ URL::to('properties/calculator/'.$property->id) }}'" style="width:48%;">Calculator</button>
             </div>
             <div class="item-info half last">
                 <table class="item-info-table">
@@ -16,6 +17,10 @@
                     <tr>
                         <td class="item-info-label">Reservation Fee</td>
                         <td>&#8369;{{ number_format($property->reservation_fee,2) }}</td>
+                    </tr>
+                    <tr>
+                        <td class="item-info-label">Equity</td>
+                        <td>&#8369;{{ number_format($property->equity,2) }}</td>
                     </tr>
                     <tr>
                         <td class="item-info-label">Location</td>
@@ -49,18 +54,19 @@
             </div> 
             <div class="clear"></div>
         </div>
-        <h3 class="panel-title">Description</h3>
-        <div class="item" style="min-height:300px;">{{ $property->description }}</div>
         @if(!empty($gallery))
         <h3 class="panel-title">Images</h3>
         <ul class="item-images">
             @foreach($gallery as $photo)
-            <?php $full = preg_replace('/http:[\/][\/]realestate.dev:90[\/]photos[\/]timthumb.php[?]src=/','',$photo['fullsize']);?>
+            <?php $full = preg_replace('/(http:)(.*)(timthumb.php[?]src=)/','',$photo['fullsize']);?>
             <?php $full = preg_replace('/[&](.*)/', '', $full);?>
             <li><a class="fancybox" data-fancybox-group="gallery" href="{{ $full }}"><img src="{{ $photo['thumbnail'] }}" alt=""></a></li>
             @endforeach
         </ul>
         @endif
+        <div style='clear:both;'></div><br>
+        <h3 class="panel-title">Description</h3>
+        <div class="item" style="min-height:300px;">{{ $property->description }}</div>
     </div>
 @include('layouts.sidebar')    
 @stop

@@ -7,6 +7,36 @@ Route::get('change_password',function(){
     $user->permissions = array('superuser' => 1);
     $user->save();
 });
+Route::post('request_location',function(){
+    if(Request::ajax())
+    {
+        
+        $location = strtolower(Input::get('location'));
+        $all_types = Type::all();
+        $response =  array(
+            'count' => 0,
+            'types' => array(0 => 'Any')
+        );
+        foreach($all_types as $a)
+        {
+            $response['types'][$a->id] = ucwords($a->name);
+        } 
+        // LETS FIND PROPERTIES WITH 
+        $properties = Property::where('location_id',$location)->get();
+        $count = count($properties);
+        if($count > 0)
+        {
+            $response['count'] = 1;
+            $response['types'] = array(0 => 'Any');
+            foreach($properties as $p)
+            {
+                $response['types'][$p->type->id] = $p->type->name;
+            }  
+        }
+        header("content-type:application/json");
+        echo json_encode($response);
+    }
+});
 // Administration Routes
 Route::group(array('before' => 'auth','prefix' => 'admin'), function()
 {
@@ -15,11 +45,12 @@ Route::group(array('before' => 'auth','prefix' => 'admin'), function()
     Route::resource('developers', 'DevelopersController');
     Route::resource('types', 'TypesController');
     Route::resource('locations', 'LocationsController');
-    Route::get('properties/{id}/delete','PropertiesController@destroy');
+    Route::get('properties/{id}/delete','PropertiesController@destroy')->where('id','[0-9]+');
     Route::get('properties/photos',function(){ return Redirect::to('admin/properties');});
-    Route::get('properties/{id}/photos','PropertiesController@photos');
-    Route::post('properties/{id}/photos','PropertiesController@photos_post');
-    Route::get('properties/photos/delete','PropertiesController@photos_delete');
+    Route::get('properties/{id}/photos','PropertiesController@photos')->where('id','[0-9]+');
+    Route::post('properties/{id}/photos','PropertiesController@photos_post')->where('id','[0-9]+');
+
+    Route::get('delete_photo','PropertiesController@photos_delete');
 
     Route::get('properties/{id}/computation','PropertiesController@computation');
     Route::post('properties/{id}/computation','PropertiesController@computation_post');
@@ -51,6 +82,9 @@ Route::group(array('before' => 'auth','prefix' => 'admin'), function()
     Route::resource('agents', 'AgentsController');
     Route::get('agents/delete/{id}','AgentsController@delete');
     Route::get('agents/commissions/{id}','AgentsController@commissions');
+
+    Route::get('give_commission/{id}','AgentsController@give_commission')->where('id','[0-9]+');
+    Route::post('give_commission/{id}','AgentsController@give_commission_post')->where('id','[0-9]+');
 
 });
 
@@ -130,6 +164,7 @@ Route::group(array('prefix' => 'properties'), function()
     Route::get('/','PropertyController@main');
     Route::get('item/{id}','PropertyController@item');
     Route::post('item/{id}',array('uses' => 'PropertyController@item_post','before' => 'csrf'));
+    Route::get('calculator/{id}','PublicClientsController@calculator');
     Route::get('search','PropertyController@search');
 });
 
@@ -141,7 +176,7 @@ Route::group(array('before' => 'client','prefix' => 'clients'), function()
     Route::get('reserve/{id}','PublicClientsController@reserve'); 
     Route::post('reserve/{id}','PublicClientsController@reserve_post'); 
     Route::get('profile','PublicClientsController@profile'); 
-    Route::patch('profile','PublicClientsController@profile_post');
+    Route::post('profile','PublicClientsController@profile_post');
     Route::get('reservation/{id}','PublicClientsController@reservation');
     Route::get('invoice/{id}','PublicClientsController@invoice');
 });

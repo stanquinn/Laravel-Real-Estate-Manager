@@ -15,7 +15,7 @@ class Agent extends Eloquent {
     public static function dropdown()
     {
         $locations = Agent::orderBy('last_name')->get();
-        $array = [];
+        $array = array();
         foreach($locations as $l)
         {
             $key = $l->id;

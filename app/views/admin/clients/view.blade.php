@@ -26,11 +26,11 @@
                   </tr>
                   <tr>
                     <td style="background-color:#333; color:white; width:30%;">Home Address</td>
-                    <td width="69%">{{ $client->home_address }}</td>
+                    <td width="69%">{{ join(" ",json_decode($client->home_address)) }}</td>
                   </tr>
                   <tr>
                     <td style="background-color:#333; color:white; width:30%;">Work Address</td>
-                    <td width="69%">{{ $client->work_address }}</td>
+                    <td width="69%">{{ join(" ",json_decode($client->work_address))}}</td>
                   </tr>
                   <tr>
                     <td style="background-color:#333; color:white; width:30%;">Company</td>

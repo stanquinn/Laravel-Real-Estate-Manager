@@ -6,6 +6,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">All Clients</h3>
                 <input type="hidden" id="create_location" value="{{ URL::to('admin/clients/create') }}"/>
+                <style type="text/css">.DTTT_container { display: none; }</style>
             </div>
             <div class="panel-body">
                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="xdatatable" width="100%">
@@ -35,7 +36,7 @@
                               <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                               <li><a href="{{ URL::to('admin/clients/update/'.$client->id) }}" >Update</a></li>
+                               <!--<li><a href="{{ URL::to('admin/clients/update/'.$client->id) }}" >Update</a></li>-->
                                <li><a href="{{ URL::to('admin/clients/transactions/'.$client->id) }}" >Transactions</a></li>
                                <li><a href="{{ URL::to('admin/clients/reservations/'.$client->id) }}" >Reservations</a></li>  
                                <li><a href="{{ URL::to('admin/clients/view/'.$client->id) }}" >View Profile</a></li>

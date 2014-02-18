@@ -48,6 +48,13 @@ class PublicClientsController extends BaseController
 			
 		}else{ return App::abort(404);}
 	}
+	public function calculator($id)
+	{
+		$property = Property::find($id);
+		if(is_null($property)){ return Redirect::to('properties'); }
+		View::share('page_title','Mortgage Calculator');
+		return View::make('public.calculator',compact('property'));
+	}
 	public function reserve($id)
 	{
 		$property = Property::find($id);
@@ -67,7 +74,6 @@ class PublicClientsController extends BaseController
 			'total_months' 			=> 'required',
 			'monthly_fee'			=> 'required',
 			'agent_id'				=> 'required',
-			'unit_type'				=> 'required',
 			'terms'					=> 'required'
 
 		);
@@ -92,11 +98,12 @@ class PublicClientsController extends BaseController
 			$reservation->total_contract_price = intval(Input::get('total_contract_price'));
 			$reservation->downpayment = $downpayment;
 			$reservation->reservation_fee = $property->reservation_fee;
+			// LOANABLE AMOUNT
 			$reservation->equity = $equity;
 			$reservation->total_months = $total_months;
 			$reservation->monthly_fee = $equity / $total_months;
 			$reservation->terms = Input::get('terms');
-			$reservation->unit_type = Input::get('unit_type');
+			//$reservation->unit_type = Input::get('unit_type');
 			$reservation->save();
 			// 2. NEW TRANSACTION
 			$transaction = new Transaction;
@@ -108,13 +115,6 @@ class PublicClientsController extends BaseController
 			$transaction->amount = $property->reservation_fee;
 			$transaction->remarks = "Property Reservation";
 			$transaction->save();
-			// 3. NEW AGENT COMMISSION
-			$commission = new Commission;
-			$commission->user_id = $this->user->id;
-			$commission->agent_id = $reservation->agent_id;
-			$commission->property_id = $property->id;
-			$commission->amount = 0;
-			$commission->save();
 			
 			// 3.GENERATE INVOICE
 			$x =  View::make('admin.transactions.show', compact('transaction','user','property'));
@@ -140,16 +140,16 @@ class PublicClientsController extends BaseController
 			$data['transaction'] = $transaction;
 			Mail::send('mails.default', $data, function($message) use($transaction,$pdf,$developer,$admin,$res)
 			{
-			    $message->to($this->user->email)->subject("Property Reservation Notification");
+			    
+				$user = Sentry::getUser();
+			    $message->to($user->email)->subject("Property Reservation Notification");
 			    $message->to($developer->email)->subject("Property Reservation Notification");
 			    $message->to($admin->email)->subject("Property Reservation Notification");
 			    $message->attach($pdf);
 			    $message->attach($res);
 			});
-			return Redirect::to('clients/reserve/'.$id)->with('success','Your reservation has been sent to administrator for approval.');
+			return Redirect::to('clients')->with('success','Your reservation has been sent to administrator for approval.');
 		}
-
-
 	}
 
 	public function login()
@@ -181,7 +181,12 @@ class PublicClientsController extends BaseController
 
                 // Try to authenticate the user
                 Sentry::authenticate($credentials,$rembr);
-                return Redirect::to('clients');
+                if(Session::has('redirect_url'))
+               	{
+               		return Redirect::to(Session::get('redirect_url'));
+               	}else{
+               		return Redirect::to('clients');
+               	}
             }
             catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
             {
@@ -221,9 +226,50 @@ class PublicClientsController extends BaseController
 
 	public function register_post()
 	{
+		
+		$home_address = array(
+			Input::get('home_street'),
+			Input::get('home_barangay'),
+			Input::get('home_city'),
+			Input::get('home_province'),
+			Input::get('home_zipcode')
+		);
+
+		$work_address = array(
+			Input::get('work_street'),
+			Input::get('work_barangay'),
+			Input::get('work_city'),
+			Input::get('work_province'),
+			Input::get('work_zipcode')
+		);
+		
+		$tin_number = Input::get('tin_number_1').Input::get('tin_number_2').Input::get('tin_number_3').Input::get('tin_number_4');
+		
 		$rules = User::$rules;
 		$rules['password'] = 'confirmed|required|min:8';
-		$rules['mobile'] = 'required|numeric';
+		$rules['mobile'] = 'required|numeric|str_len:11'; 
+		$rules['email_address'] = 'required';
+		$rules['email_tld'] ='required|tld';
+
+		unset($rules['work_address']);
+		unset($rules['home_address']);
+
+		$rules['home_street'] 	= 'required';
+		$rules['home_barangay'] = 'required';
+		$rules['home_city'] 	= 'required';
+		$rules['home_zipcode'] 	= 'required|numeric';
+
+		$rules['work_street'] 	= 'required';
+		$rules['work_barangay'] = 'required';
+		$rules['work_city'] 	= 'required';
+		$rules['work_zipcode'] 	= 'required|numeric';
+
+		$rules['tin_number_1'] 	= 'numeric|required|str_len:3';
+		$rules['tin_number_2'] 	= 'numeric|required|str_len:3';
+		$rules['tin_number_3'] 	= 'numeric|required|str_len:3';
+		$rules['tin_number_4'] 	= 'numeric|required|str_len:3';
+
+
 		$validator = Validator::make(Input::all(),$rules);
 		if($validator->fails())
 		{
@@ -234,11 +280,11 @@ class PublicClientsController extends BaseController
 			$user = Sentry::register(array(
 		    	'first_name'	=> Input::get('first_name'),
 		    	'last_name'		=> Input::get('last_name'),
-		    	'tin_number'	=> Input::get('tin_number'),
+		    	'tin_number'	=> $tin_number,
 		    	'landline'		=> Input::get('landline'),
 		    	'mobile'		=> Input::get('mobile'),
-		    	'work_address'	=> Input::get('work_address'),
-		    	'home_address'	=> Input::get('home_address'),
+		    	'work_address'	=> json_encode($work_address),
+		    	'home_address'	=> json_encode($home_address),
 		    	'company'		=> Input::get('company'),
 		    	'occupation'	=> Input::get('occupation'),
 		        'email'       	=> Input::get('email'),
@@ -249,7 +295,7 @@ class PublicClientsController extends BaseController
 			$activationCode = $user->getActivationCode();
 
             $data['user'] = $user;
-            $data['password'] = $user->password;
+            $data['password'] = Input::get('password');
             // Send activation code to the user so he can activate the account
             Mail::send('mails.activation', $data, function($message) use ($user)
             {
@@ -371,24 +417,75 @@ class PublicClientsController extends BaseController
 	public function profile()
 	{
 		View::share('page_title','My Profile');
+
 		$client = $this->user;
-		return View::make('public.clients.profile',compact('client'));		
+
+		$work_address = json_decode($client->work_address);
+		$home_address = json_decode($client->home_address);
+
+		$tin_number = array(
+			substr($client->tin_number,0,2),
+			substr($client->tin_number,2,3),
+			substr($client->tin_number,5,3),
+			substr($client->tin_number,8,3)
+		);
+		$email = explode("@",$client->email);
+		return View::make('public.clients.profile',compact('client','home_address','work_address','tin_number','email'));		
 	}
 
 	public function profile_post()
 	{
+		$home_address = array(
+			Input::get('home_street'),
+			Input::get('home_barangay'),
+			Input::get('home_city'),
+			Input::get('home_province'),
+			Input::get('home_zipcode')
+		);
+
+		$work_address = array(
+			Input::get('work_street'),
+			Input::get('work_barangay'),
+			Input::get('work_city'),
+			Input::get('work_province'),
+			Input::get('work_zipcode')
+		);
+
+		$tin_number = Input::get('tin_number_1').Input::get('tin_number_2').Input::get('tin_number_3').Input::get('tin_number_4');
+		
 		$rules = User::$rules;
-		// CHECKS IF PASSWORD IS SET.
+		$rules['password'] = 'confirmed|required|min:8';
+		$rules['mobile'] = 'required|numeric|str_len:11'; 
+		$rules['email_address'] = 'required';
+		$rules['email_tld'] ='required|tld';
+
+		unset($rules['work_address']);
+		unset($rules['home_address']);
+
+		$rules['home_street'] 	= 'required';
+		$rules['home_barangay'] = 'required';
+		$rules['home_city'] 	= 'required';
+		$rules['home_zipcode'] 	= 'required|numeric';
+
+		$rules['work_street'] 	= 'required';
+		$rules['work_barangay'] = 'required';
+		$rules['work_city'] 	= 'required';
+		$rules['work_zipcode'] 	= 'required|numeric';
+
+		$rules['tin_number_1'] 	= 'numeric|required|str_len:3';
+		$rules['tin_number_2'] 	= 'numeric|required|str_len:3';
+		$rules['tin_number_3'] 	= 'numeric|required|str_len:3';
+		$rules['tin_number_4'] 	= 'numeric|required|str_len:3';
+
+		$rules['tin_number'] = 'required|numeric|unique:users,tin_number,'.$this->user->id;
+		$rules['email'] 	 = 'email|required|unique:users,email,'.$this->user->id;
+
 		unset($rules['password']);
+
 		if(Input::get('password'))
 		{
 			$rules['password'] = 'confirmed|required|min:8';
 		}
-		// NEW RULES
-		$rules['tin_number'] = 'required|numeric|unique:users,tin_number,'.$this->user->id;
-		$rules['email'] 	 = 'email|required|unique:users,email,'.$this->user->id;
-		$rules['mobile'] = 'required|numeric';
-
 		$validator = Validator::make(Input::all(),$rules);
 		if($validator->fails())
 		{
@@ -401,8 +498,8 @@ class PublicClientsController extends BaseController
 			$this->user->tin_number		= Input::get('tin_number');
 			$this->user->landline		= Input::get('landline');
 			$this->user->mobile			= Input::get('mobile');
-			$this->user->work_address	= Input::get('work_address');
-			$this->user->home_address	= Input::get('home_address');
+			$this->user->work_address	= json_encode($work_address);
+			$this->user->home_address	= json_encode($home_address);
 			$this->user->company		= Input::get('company');
 			$this->user->occupation		= Input::get('occupation');
 			$this->user->email       	= Input::get('email');

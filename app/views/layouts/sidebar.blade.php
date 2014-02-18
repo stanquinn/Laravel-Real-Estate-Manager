@@ -4,12 +4,12 @@
                     {{ Form::open(array('url' => URL::to('properties'),'method' => 'GET')) }}
                     <div class="form-group">
                         {{ Form::label('Location') }}
-                        {{ Form::select('location',Location::dropdown(true),null,array('class' => 'search-select')) }}
+                        {{ Form::select('location',Location::dropdown(true),null,array('class' => 'search-select','id' => 'location')) }}
                         <input type="hidden" name="search" value="true">
                     </div>
                     <div class="form-group">
                         {{ Form::label('Type') }}
-                        {{ Form::select('type',Type::dropdown(true),null,array('class' => 'search-select')) }}
+                        {{ Form::select('type',Type::dropdown(true),null,array('class' => 'search-select','id' => 'type')) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('Developer') }}
@@ -141,7 +141,7 @@
                 <div class="widget-inner">
                     <p><strong>Live and Love Realty Corporation</strong><br>
                         Office | 603.677.7012<br>
-                        info@liveandlove.com<br>
-                        Meredith Office 3 Main Street Pasig City 1607, Philippines</p>
+                        livenlove_realty@yahoo.com<br>
+                        736 Cityland Mega Plaza, ADB Ave., Ortigas Center, Pasig City</p>
                 </div>
             </div>

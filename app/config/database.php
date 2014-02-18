@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'mean',
-			'username'  => 'root',
-			'password'  => '',
+			'database'  => 'santi_mean',
+			'username'  => 'santi_mean',
+			'password'  => 'palapa2013',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

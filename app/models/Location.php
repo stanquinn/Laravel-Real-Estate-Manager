@@ -4,7 +4,7 @@ class Location extends Eloquent {
 	protected $guarded = array();
 
 	public static $rules = array(
-		'name' => 'required|unique:locations,name'
+		'name' => 'required',
 	);
 
     protected $softDelete = true;
@@ -16,7 +16,7 @@ class Location extends Eloquent {
 
     public static function update_rules($id)
     {
-        return array('name' => 'required|unique:locations,name,'.$id);
+        return array('name' => 'required');
     }
     public static function got_property($id)
     {
@@ -27,7 +27,7 @@ class Location extends Eloquent {
     public static function dropdown($novalue = null)
     {
         $locations = Location::orderBy('name')->get();
-        $array = [];
+        $array = array();
         if($novalue)
         {
             $array = array(

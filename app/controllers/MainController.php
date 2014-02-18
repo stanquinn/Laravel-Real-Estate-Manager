@@ -19,7 +19,7 @@ class MainController extends BaseController {
     }
 
     public function about(){
-        $article = Post::find(9);
+        $article = Post::find(163);
         if(is_null($article)){ return App::abort('404'); }
         View::share('page_title',$article->title);
         View::share('post',$article);
@@ -38,7 +38,7 @@ class MainController extends BaseController {
     }
     public function contact()
     {
-        $post = Post::find(5);
+        $post = Post::find(162);
         if(is_null($post)){ return App::abort('404'); }
         View::share('page_title',$post->title);
         View::share('post',$post);
@@ -47,7 +47,7 @@ class MainController extends BaseController {
     public function contact_post()
     {
         $rules = array(
-            'name' => 'required|alpha_num',
+            'name' => 'required',
             'email' => 'required|email',
             'message' => 'required'
         );
@@ -60,7 +60,7 @@ class MainController extends BaseController {
             $admin_email = User::find(1)->email;
             $data = array(
                 'from' => Input::get('name'),
-                'message' => Input::get('message'),
+                'msg' => Input::get('message'),
                 'email' => Input::get('email')
             );
             Mail::send('mails.contact', $data, function($message) use($admin_email)

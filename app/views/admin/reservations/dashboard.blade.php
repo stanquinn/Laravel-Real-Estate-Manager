@@ -15,8 +15,7 @@
                             <th>Property(Model Number)</th>
                             <th>Client Name</th>
                             <th>Mobile</th>
-                            <th>Terms</th>
-                            <th>Unit Type</th>
+                            <th>Date</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -25,10 +24,17 @@
                         <tr>
                             <td>{{ $p->id }}</td>
                             <td>{{ $p->property->model_number }}</td>
-                            <td>{{ $p->user->first_name }} {{ $p->user->last_name }}</td>
-                            <th>{{ $p->user->mobile }}
-                            <td>{{ ucwords($p->terms) }}</td>
-                            <td>{{ ucwords($p->unit_type) }}</td>
+                            <td>
+                                @if(is_object($p->user))
+                                {{ $p->user->first_name }} {{ $p->user->last_name }}
+                                @endif
+                            </td>
+                            <td>
+                                @if(is_object($p->user))
+                                {{ $p->user->mobile }}
+                                @endif
+                            </td>
+                            <td>{{ $p->created_at->format("j F Y") }}</td>
                             <td>
                                 <a href="{{ URL::to('admin/clients/reservation') }}/{{ $p->id }}" class="btntable pull-left">View Information</a>
                             </td>

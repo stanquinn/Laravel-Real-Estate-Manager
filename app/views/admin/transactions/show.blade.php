@@ -21,7 +21,7 @@
     </tr>
     <tr>
         <td style="none;border-collapse: collapse;padding: 10px;">
-              <p style="line-height: 24px;"><strong>Customer: {{ $transaction->user->first_name }} {{ $transaction->user->last_name }}</strong><br>{{ nl2br($transaction->user->work_address) }}</p>
+              <p style="line-height: 24px;"><strong>Customer: {{ $transaction->user->first_name }} {{ $transaction->user->last_name }}</strong><br>{{ nl2br(join(" ",json_decode($transaction->user->work_address))) }}</p>
         </td>
         <td style="none; border-collapse: collapse;padding: 10px; text-align:right;">
               <p style="line-height: 24px;"><strong>Invoice Number #</strong>: {{ $transaction->reference_number }}<br>

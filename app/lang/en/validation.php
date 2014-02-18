@@ -62,6 +62,10 @@ return array(
 	),
 	"unique"           => "The :attribute has already been taken.",
 	"url"              => "The :attribute format is invalid.",
+	"str_len"		   => "The :attribute character count is not valid.",
+	"str_between"	   => "The :attribute character count is not valid.",
+	"tld"	   		   => "Invalid domain name.",
+	"not_exists"	   => ":attribute is already being used.",
 
 	/*
 	|--------------------------------------------------------------------------

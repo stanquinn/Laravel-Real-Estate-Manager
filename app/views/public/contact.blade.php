@@ -11,7 +11,6 @@
 	    @endif
 		@if ($message = Session::get('success'))
 		<div class="alert alert-success alert-dismissable">
-		  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		  <strong>Success:</strong> {{ $message }}
 		</div>
 		{{ Session::forget('success') }}

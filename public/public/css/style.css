@@ -13,6 +13,25 @@ p {
     font-size:12px;
     line-height: 18px;
 }
+.post h2
+{
+    font-size: 16px;
+   color:#556f33; 
+   margin-bottom: 10px;
+}
+.post p 
+{
+    line-height: 19px;
+    margin-bottom: 15px;
+
+}
+.post ul {
+    list-style: circle;
+    margin-left: 15px;
+}
+.post ul li{
+    margin-bottom: 10px;
+}
 #wrapper
 {
     margin:auto;
@@ -318,6 +337,20 @@ ul.news-list li p.news-title
     background-color:#556f33;
     color:white;
 }
+div.item table
+{
+    width:100% !important;
+    border-collapse: collapse;
+}
+div.item table td
+{
+    padding-left:5px;
+    padding-right: 5px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    text-align: right;
+    border:solid 1px #ddd;
+}
 .item 
 {
     padding-bottom: 10px;
@@ -426,9 +459,13 @@ padding-bottom: 14px;
 }
 .registration-panel
 {
-    width:70%;
+    width:85%;
     margin:auto;
     padding-top:25px;
+}
+.red 
+{
+    color:red;
 }
 div.login-wrapper
 {
@@ -446,7 +483,57 @@ div.login-inner
 .login-panel input[type="text"].form-control,.login-panel input[type="email"].form-control,.login-panel input[type="password"].form-control
 {
     width:100%;
-    line-height: 25px;
+    line-height: 15px;
+}
+.tin-control
+{
+    float:left;
+    width:25%;
+    line-height:15px;
+}
+.tin-control .form-control
+{
+    width:80% !important;
+    float:left;
+}
+.tin-control .form-control:last-child
+{
+    width:100% !important;
+    float:left;
+}
+.tin-control:last-child
+{
+    margin-right:0px;
+}
+.tin-control span
+{
+    display: block;
+    text-align: center;
+    width: 15%;
+    line-height:24px;
+    float:left;
+}
+.form-email-control
+{
+    width:100%;
+}
+.form-email-control .email-address
+{
+    width:67% !important;
+    float:left;
+}
+.form-email-control .email-tld
+{
+    width:25% !important;
+    float:right;
+}
+.form-email-control span
+{
+    width:5%;
+    display: block;
+    line-height:23px;
+    float:left;
+    text-align: center;
 }
 .login-panel input[type="submit"]
 {
@@ -455,10 +542,26 @@ div.login-inner
 }
 .login-panel label { display: block;}
 .login-panel p { display: block; text-align: center;}
+.address-field .form-control
+{
+    width:15% !important;
+    float:left;
+    margin-right:5px;
+}
+.address-field .form-control:last-child
+{
+    margin-right: 0px;
+    width:9% !important;
+    float:right;
+}
 .registration-panel .form-control
 {
-    height:25px;
+    height:20px;
     width:100%;
+}
+.address-field .form-control.first
+{
+    width:40% !important;
 }
 .registration-panel .form-group
 {
@@ -532,3 +635,58 @@ table.striped td,table.striped th{
 table.striped th{
     font-weight: bold;
 }
+h3.heading
+{
+    font-size:15px;
+    color:#556f33;
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+h3.heading span
+{
+    font-size:12px;
+    color:#666;
+    display: block;
+}
+table.calculator
+{
+    width:100%;
+    border-collapse: collapse;
+}
+table.calculator td
+{
+    vertical-align: middle;
+    width:30%;
+}
+table.calculator td.label
+{
+    vertical-align: middle;
+    width:30%;
+    font-size: 12px;
+}
+table.calculator input[type="text"]
+{
+    width:98%;
+    height:14px;
+}
+table.calculator .item-info-label 
+{
+    width:15%;
+    margin:0px;
+}
+table.calculator #downpayment
+{
+    width:50%;
+    float:left;
+    margin:0px;
+
+}
+table.calculator #conversion
+{
+    width:45%;
+    float:left;
+    margin:0px;
+    margin-left:5px;
+}
+

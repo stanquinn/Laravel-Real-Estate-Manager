@@ -48,6 +48,8 @@ Route::filter('auth', function()
 
 Route::filter('client', function()
 {
+	Session::put('redirect_url',Request::url());
+
 	if (!Sentry::check()) 
 	{
 		return Redirect::to('clients/login')->with('warning','Login Required.');

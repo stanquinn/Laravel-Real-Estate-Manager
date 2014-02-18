@@ -1,7 +1,7 @@
             <div class="grid_4" id="right">
                 <h3 class="panel-title">Welcome To Live and Love</h3>
                 <div class="widget-inner">
-                    <p>Four Seasons Sotheby's International Realty in Meredith serves the entire Lakes Region of New Hampshire including Lake Winnipesaukee, Squam Lake and Newfound Lake. Four Seasons SIR offers extraordinary expertise and extensive marketing to both buyers and sellers. Whether you are looking for a unique waterfront home, Squam Lake Adirondack compound or mountain top estate, Four Seasons Sotheby's can assist in your property search. Associates Ruth and Brian Neidhardt have been Realtors.</p>
+                    <p>This is where everything I like belongs.Where I always find people I love.This is where I feel safe. This is where I can laugh loud and run fast. This is where I dreams with the moon, and daydream when the sunshines. This is where I discover new things and invent stories I tell.This is where my friends play, and my toys wake up. This is a place I love. This is where I live.</p>
                 </div>
                 <h3 class="panel-title">Latest News</h3>
                 <ul class="news-list">
@@ -16,8 +16,8 @@
                 <h3 class="panel-title">Contact Us</h3>
                 <div class="widget-inner">
                     <p><strong>Live and Love Realty Corporation</strong><br>
-                        Office | 603.677.7012<br>
+                        Office | 667-3511 to 12<br>
                         info@liveandlove.com<br>
-                        Meredith Office 3 Main Street Pasig City 1607, Philippines</p>
+                        736 Cityland Mega Plaza, ADB Ave., Ortigas Center, Pasig City</p>
                 </div>
             </div>

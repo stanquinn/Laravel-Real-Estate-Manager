@@ -9,12 +9,12 @@
             {{ Form::open(array('url' => URL::to('properties'),'method' => 'GET','class' => 'container_12')) }}
                  <div class="grid_2">
                     {{ Form::label('Location') }}<br>
-                    {{ Form::select('location',Location::dropdown(true),null,array('class' => 'search-select')) }}
+                    {{ Form::select('location',Location::dropdown(true),null,array('class' => 'search-select','id' =>'location')) }}
                     <input type="hidden" name="search" value="true">
                  </div>
                 <div class="grid_2">
                     {{ Form::label('Type') }}<br>
-                    {{ Form::select('type',Type::dropdown(true),null,array('class' => 'search-select')) }}
+                    {{ Form::select('type',Type::dropdown(true),null,array('class' => 'search-select','id' => 'type')) }}
                 </div>
                 <div class="grid_2">
                     {{ Form::label('Developer') }}<br>
@@ -57,14 +57,6 @@
                     {{ Form::label('Min Price') }}<br>
                     <select name="min" class="search-select">
                         <option value="0">Min Price</option>
-                        <option value="100000">100,000</option>
-                        <option value="150000">150,000</option>
-                        <option value="200000">200,000</option>
-                        <option value="250000">250,000</option>
-                        <option value="300000">300,000</option>
-                        <option value="350000">350,000</option>
-                        <option value="400000">400,000</option>
-                        <option value="450000">450,000</option>
                         <option value="500000">500,000</option>
                         <option value="550000">550,000</option>
                         <option value="600000">600,000</option>
@@ -91,14 +83,6 @@
                     {{ Form::label('Max Price') }}<br>
                     <select name="max" class="search-select">
                         <option value="0">Min Price</option>
-                        <option value="100000">100,000</option>
-                        <option value="150000">150,000</option>
-                        <option value="200000">200,000</option>
-                        <option value="250000">250,000</option>
-                        <option value="300000">300,000</option>
-                        <option value="350000">350,000</option>
-                        <option value="400000">400,000</option>
-                        <option value="450000">450,000</option>
                         <option value="500000">500,000</option>
                         <option value="550000">550,000</option>
                         <option value="600000">600,000</option>

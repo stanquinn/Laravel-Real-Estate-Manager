@@ -15,6 +15,8 @@ class Property extends Eloquent {
         'lot'           => 'required|numeric',
         'block'         => 'required|numeric',
         'reservation_fee'=> 'required|numeric',
+        'price'         => 'required|numeric',
+        'equity'        => 'required|numeric',
         'status'        => 'required|numeric',
 	);
     public function developer()
@@ -72,13 +74,13 @@ class Property extends Eloquent {
             }
             return $im;
         }else{
-            return [];
+            return array();
         }
     }
 
     public static function gallery($id,$thumbnail = array(100,100),$fullsize = array(500,350))
     {
-        $gallery = [];
+        $gallery = array();
         $thumbnails = Property::photos($id,$thumbnail);
         $fullsizes = Property::photos($id,$fullsize);
 
@@ -108,7 +110,7 @@ class Property extends Eloquent {
             }
             return $im;
         }else{
-            return [];
+            return array();
         }
     }
 

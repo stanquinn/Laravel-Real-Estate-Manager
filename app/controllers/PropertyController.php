@@ -24,17 +24,17 @@ class PropertyController extends BaseController
 			switch($k)
 			{
 				case 'location':
-					if(Input::get('location') != '')
+					if(Input::get('location'))
 						$properties = $properties->where('location_id',Input::get('location'));
 				break;
 
 				case 'type':
-					if(Input::get('type') != '')
+					if(Input::get('type'))
 						$properties = $properties->where('type_id',Input::get('type'));
 				break;
 
 				case 'developer':
-					if(Input::get('developer') != '')
+					if(Input::get('developer'))
 						$properties = $properties->where('developer_id',Input::get('developer'));
 				break;
 

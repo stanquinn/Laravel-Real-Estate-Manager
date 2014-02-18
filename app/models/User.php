@@ -10,11 +10,12 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
 		'last_name' 	=> 'required',
 		'password'		=> 'required',
 		'email'			=> 'required|unique:users,email',
-		'tin_number'	=> 'required|unique:users,tin_number',
+		'tin_number'	=> 'required|str_len:12|unique:users,tin_number',
 		'home_address'	=> 'required',
 		'work_address'  => 'required',
 		'company'		=> 'required',
-		'mobile'		=> 'required',
+		'mobile'		=> 'required|numeric|str_len:11',
+		'landline'		=> 'str_len:7|numeric',
 		'occupation'	=> 'required'
 	);
 

@@ -1,12 +1,13 @@
 <?php
 
 class Type extends Eloquent {
+    
 	protected $guarded = array();
 
     protected $softDelete = true;
 
 	public static $rules = array(
-		'name' => 'required|unique:types,name'
+		'name' => 'required',
 	);
     public function properties()
     {
@@ -14,7 +15,7 @@ class Type extends Eloquent {
     }
     public static function update_rules($id)
     {
-        return array('name' => 'required|unique:types,name,'.$id);
+        return array('name' => 'required');
     }
     public static function got_property($id)
     {
@@ -24,7 +25,7 @@ class Type extends Eloquent {
     public static function dropdown($novalue = null)
     {
         $locations = Type::orderBy('name')->get();
-        $array = [];
+        $array = array();
         if($novalue)
         {
             $array = array(

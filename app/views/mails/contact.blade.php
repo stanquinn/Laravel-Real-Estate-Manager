@@ -8,6 +8,6 @@
 	<p><strong>From:</strong> {{ $from }}</p>
 	<p><strong>Email:</strong> {{ $email }}</p>
 	<p><strong>Message:</strong></p>
-	 <p>{{ nl2br(strip_tags($message)) }}</p>
+	 <p>{{ nl2br(strip_tags($msg)) }}</p>
 </body>
 </html>

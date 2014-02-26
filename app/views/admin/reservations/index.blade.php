@@ -25,7 +25,11 @@
                         @foreach($reservations as $p)
                         <tr>
                             <td>{{ $p->id }}</td>
-                            <td>{{ $p->property->model_number }}</td>
+                            <td>
+                                @if(is_object($p->property))
+                                {{ $p->property->model_number }}
+                                @endif
+                            </td>
 
                             <td>
                                 @if(is_object($p->user))

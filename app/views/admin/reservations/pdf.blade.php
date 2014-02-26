@@ -27,7 +27,7 @@
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ ucwords($reservation->user->first_name) }} {{ ucwords($reservation->user->last_name) }}</td>
             </tr>
             <tr>
-                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Tin Number:</td>
+                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">TIN:</td>
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ $reservation->user->tin_number }}</td>
             </tr>
             <tr>

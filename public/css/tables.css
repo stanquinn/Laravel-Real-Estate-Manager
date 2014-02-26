@@ -1,3 +1,7 @@
+label.error
+{
+    color:red;
+}
 div.dataTables_length label {
     font-weight: normal;
     float: left;

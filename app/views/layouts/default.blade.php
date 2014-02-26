@@ -113,6 +113,8 @@
 		<script src="{{ asset('js/restfulizer.js') }}"></script>
         <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('js/TableTools.js') }}"></script>
+        <script src="{{ asset('js/jquery.validate.js') }}"></script>
+        <script src="{{ asset('public/js/numeral.min.js') }}"></script>
         <script src="{{ asset('js/custom.js') }}"></script>
         <!-- Thanks to Zizaco for the Restfulizer script.  http://zizaco.net  -->
 	</body>

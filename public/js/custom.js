@@ -23,6 +23,22 @@ $(document).ready(function() {
             ]
         }
     } );
+    $('#x2datatable').dataTable( {
+        "sDom": "<'row'<'col-xs-6'T><'col-xs-6'f>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
+        "sPaginationType": "full_numbers",
+        "aaSorting": [[ 1, "desc" ]],
+        "oTableTools": {
+            "aButtons": [
+                {
+                    "sExtends":    "text",
+                    "sButtonText": "Add New",
+                    "fnClick": function ( nButton, oConfig, oFlash ) {
+                        window.location = jQuery('#create_location').val();
+                    }
+                }
+            ]
+        }
+    } );
     jQuery('.btn-delete').click(function(){
        c = window.confirm("Are you sure you want to deleted this item?");
         if(c){ return true;}else{ return false;}
@@ -47,4 +63,18 @@ $(document).ready(function() {
         }
         console.log(action);
     });
+
+   $("#properties_form").validate();
+
+   $('.numeral').change(function(){
+        var number = $(this).val();
+        if(isNaN(number))
+        {
+            $(this).val("");
+        }else{
+            var decimal = numeral(number).format('0,0.00');
+            $(this).val(decimal);
+        }
+   });
+
 } );

@@ -120,7 +120,7 @@
 				{{ Form::email('email',$user->email,array('placeholder' => 'Work / Job','class' => 'control-input','readonly' => true)) }}
 			</div>
 			<div class="half last">
-				<label>Tin Number:</label>
+				<label>TIN:</label>
 				{{ Form::text('tin_number',$user->tin_number,array('placeholder' => '','class' => 'control-input','readonly' => true)) }}
 			</div>
 			<div style="clear:both;"></div>
@@ -165,7 +165,10 @@
 		</div>
 		<div style="clear:both;"></div>
 		<div class="reservation-holder" style="border:none;">
-			<button type="submit" class="button-yellow" style="float:right;">Send Reservation</button><br>
+				<textarea id="terms" style="width:100%; height:200px;" readonly>{{ strip_tags(Post::content(164)) }}</textarea>
+				<div style="clear:both;"></div>
+				<input type="checkbox" id="agree" value="true"/>I agree to the the terms and condition.
+				<button type="submit" class="button-yellow" style="float:right; display:none;" id="reserve-button">Send Reservation</button><br>
 		</div>
 		<div style="clear:both;"></div>
     </div>

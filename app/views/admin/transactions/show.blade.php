@@ -57,18 +57,30 @@
       </div>
       <br>
       <div class="rule" style="background-color: #000; line-height:30px;font-size: 24px;display: block;text-align: center;color: #FFF;text-transform: uppercase;margin-bottom: 25px;">Billing Information</div>
-      <p style="line-height: 24px;">
-Account Holder : John Dave Decano<br>
-Account Holder Address: 144-3 West Bank Floodway Maybunga Pasig City Philippines 1607<br>
-Account Holder Telephone: 639469026992<br>
-Bank Name: UNION BANK OF THE PHILIPPINES<br>
-Bank Branch: Union Bank Plaza Ortigas Pasig City<br>
-Bank Address: UnionBank Plaza Bldg., Meralco Ave. corner Onyx St. Ortigas Pasig City Philippines 1605<br>
-Bank Telephone: 1-800-1888-2277*<br>
-Bank Account Number: 109452024675<br>
-Bank Swift Code: 010419995<br>
-Currency: Philippine Peso
-      </p> 
+<p>Acct. holder: Live n&rsquo; Love Realty  Corporation<br />
+  Acct. holder address: 736 City and Mega  Plaze ADB Avenue, Ortigas Center, Pasig City<br />
+  Acct holder telephone: 667-3511<br />
+  Bank Name: Asia United Bank<br />
+  Bank Branch: Ortigas Pasig City<br />
+  Bank Add.: ADB Avenue Ortigas Pasig City<br />
+  Bank Telephone:<br />
+  Bank Acct. No.: 2120682717<br />
+  Currency: Philippine Peso</p>
+<p>REMINDER: The Following Requirements Must  Be Provided.</p>
+<ul>
+  <li>One month payslip(latest)</li>
+  <li>Birth Certificate / Marriage  Contract</li>
+  <li>ITR – income tax return</li>
+  <li>Certificate of employment and  compensation – notarized – original</li>
+  <li>MSVS pag-ibig</li>
+  <li>Proof of billing meralco /  water / credit card billing</li>
+  <li>ID</li>
+  <li>Cedula</li>
+  <li>4 pcs. 1x1 picture</li>
+  <li>PDC (post-dated checks)</li>
+  <li>Special Power of Attorney</li>
+</ul>
+<p>For further information please contact us. 667-3511 to 12 </p>
   </div>
   <div style="clear:both;"></div>
 </div>

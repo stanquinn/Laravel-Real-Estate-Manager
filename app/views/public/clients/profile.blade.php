@@ -7,32 +7,42 @@
                 <div class="login-inner">
                     @include('layouts.notifications')
                     @if(Session::has('errors'))
-                    <div class="alert alert-danger">
-                        <h4>Warning!</h4>
-                        @foreach($errors->all() as $message)
-                        {{ $message }}<br>
-                        @endforeach
-                    </div><!--alert-->
+                    <script type="text/javascript">
+                    $(document).ready(function(){
+                        <?php
+                            $messages = $errors->getMessages();
+                            $keys = array_keys($errors->getMessages());
+                            foreach ($keys as $k) {
+                                if(!preg_match("/(tin_number_)(\d)/",$k))
+                                {
+                                    $m = implode("<br>",$messages[$k]);
+                                    echo '$("#'.$k.'").notify("'.$m.'");'.PHP_EOL;
+                                }
+                            }
+                        ?>
+                    });
+                    </script>
                     @endif
                     <form action="" method="POST" id="userform">
                     <div class="form-group row">
                         <div class="col-lg-6">
                             {{ Form::label('', 'First name:') }}<span class="red">*</span>
-                            {{ Form::text('first_name',$client->first_name,array('class' => 'form-control')) }}
+                            {{ Form::text('first_name',$client->first_name,array('class' => 'form-control','id' => 'first_name')) }}
                         </div>
                         <div class="col-lg-6 last">
                             {{ Form::label('', 'Last name:') }}<span class="red">*</span>
-                            {{ Form::text('last_name',$client->last_name,array('class' => 'form-control')) }}
+                            {{ Form::text('last_name',$client->last_name,array('class' => 'form-control','id' => 'last_name')) }}
                         </div> 
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-6">
-                            {{ Form::label('', 'Tin Number:') }}<span class="red">*</span><div style="clear:both;"></div>
-                            <div class="tin-control">{{ Form::text('tin_number_1',$tin_number[0],array('class' => 'form-control','id' => 'tin_number_1')) }}<span>-</span></div>
-                            <div class="tin-control">{{ Form::text('tin_number_2',$tin_number[1],array('class' => 'form-control','id' => 'tin_number_2')) }}<span>-</span></div>
-                            <div class="tin-control">{{ Form::text('tin_number_3',$tin_number[2],array('class' => 'form-control','id' => 'tin_number_3')) }}<span>-</span></div>
-                            <div class="tin-control">{{ Form::text('tin_number_4',$tin_number[3],array('class' => 'form-control','id' => 'tin_number_4')) }}</div>
+                            {{ Form::label('', 'TIN:') }}<span class="red">*</span><div style="clear:both;"></div>
+                            <div class="tin-control">{{ Form::text('tin_number_1',$tin_number[0],array('class' => 'form-control','id' => '')) }}<span>-</span></div>
+                            <div class="tin-control">{{ Form::text('tin_number_2',$tin_number[1],array('class' => 'form-control','id' => '')) }}<span>-</span></div>
+                            <div class="tin-control">{{ Form::text('tin_number_3',$tin_number[2],array('class' => 'form-control','id' => '')) }}<span>-</span></div>
+                            <div class="tin-control">{{ Form::text('tin_number_4',$tin_number[3],array('class' => 'form-control','id' => '')) }}</div>
                             <input type="hidden" name="tin_number" value="{{ $client->tin_number }}" id="tin_number"/>
+                        
                         </div>
                         <div class="col-lg-6 last">
                             {{ Form::label('', 'Email:') }}<span class="red">*</span>
@@ -47,7 +57,7 @@
                     <div class="form-group row">
                         <div class="col-lg-6">
                             {{ Form::label('', 'Password:') }}<span class="red">*</span><div style="clear:both;"></div>
-                            {{ Form::password('password',array('class' => 'form-control')) }}
+                            {{ Form::password('password',array('class' => 'form-control','id' => 'password')) }}
                         </div> 
                         <div class="col-lg-6 last">
                             {{ Form::label('', 'Password Confirmation:') }}<span class="red">*</span><div style="clear:both;"></div>
@@ -56,7 +66,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-6">
-                            {{ Form::label('', 'Landline:') }}
+                            {{ Form::label('', 'Landline:') }}<span class="red">*</span><div style="clear:both;"></div>
                             {{ Form::text('landline',$client->landline,array('class' => 'form-control','id' => 'landline','placeholder' => '')) }}
                         </div>
                         <div class="col-lg-6 last">
@@ -67,31 +77,31 @@
                     <div class="form-group row">
                         <div class="col-lg-12 address-field">
                             {{ Form::label('', 'Work Address:') }}<span class="red">*</span><div style="clear:both;"></div>
-                            {{ Form::text('work_street',$work_address[0],array('class' => 'form-control first','placeholder' => 'Street')) }}
-                            {{ Form::text('work_barangay',$work_address[1],array('class' => 'form-control','placeholder' => 'Barangay')) }}
-                            {{ Form::text('work_city',$work_address[2],array('class' => 'form-control','placeholder' => 'City')) }}
-                            {{ Form::text('work_province',$work_address[3],array('class' => 'form-control','placeholder' => 'Province')) }}
-                            {{ Form::text('work_zipcode',$work_address[4],array('class' => 'form-control','placeholder' => 'Zipcode')) }}
+                            {{ Form::text('work_street',$work_address[0],array('class' => 'form-control first','placeholder' => 'Street','id' => 'work_street')) }}
+                            {{ Form::text('work_barangay',$work_address[1],array('class' => 'form-control','placeholder' => 'Barangay','id' => 'work_barangay')) }}
+                            {{ Form::text('work_city',$work_address[2],array('class' => 'form-control','placeholder' => 'City','id' => 'work_city')) }}
+                            {{ Form::text('work_province',$work_address[3],array('class' => 'form-control','placeholder' => 'Province','id' => 'work_province')) }}
+                            {{ Form::text('work_zipcode',$work_address[4],array('class' => 'form-control','placeholder' => 'Zipcode','id' => 'work_zipcode')) }}
                         </div> 
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-12 address-field">
                             {{ Form::label('', 'Home Address:') }}<span class="red">*</span><div style="clear:both;"></div>
-                            {{ Form::text('home_street',$home_address[0],array('class' => 'form-control first','placeholder' => 'Street')) }}
-                            {{ Form::text('home_barangay',$home_address[1],array('class' => 'form-control','placeholder' => 'Barangay')) }}
-                            {{ Form::text('home_city',$home_address[2],array('class' => 'form-control','placeholder' => 'City')) }}
-                            {{ Form::text('home_province',$home_address[3],array('class' => 'form-control','placeholder' => 'Province')) }}
-                            {{ Form::text('home_zipcode',$home_address[4],array('class' => 'form-control','placeholder' => 'Zipcode')) }}
+                            {{ Form::text('home_street',$home_address[0],array('class' => 'form-control first','placeholder' => 'Street','id' => 'home_street')) }}
+                            {{ Form::text('home_barangay',$home_address[1],array('class' => 'form-control','placeholder' => 'Barangay','id' => 'home_barangay')) }}
+                            {{ Form::text('home_city',$home_address[2],array('class' => 'form-control','placeholder' => 'City','id' => 'home_city')) }}
+                            {{ Form::text('home_province',$home_address[3],array('class' => 'form-control','placeholder' => 'Province','id' => 'home_province')) }}
+                            {{ Form::text('home_zipcode',$home_address[4],array('class' => 'form-control','placeholder' => 'Zipcode','id' => 'home_zipcode')) }}
                         </div> 
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-6">
-                            {{ Form::label('', 'Company:') }}
-                            {{ Form::text('company',$client->company,array('class' => 'form-control')) }}
+                            {{ Form::label('', 'Company:') }}<span class="red">*</span><div style="clear:both;"></div>
+                            {{ Form::text('company',$client->company,array('class' => 'form-control','id' => 'company')) }}
                         </div>
                         <div class="col-lg-6 last">
-                            {{ Form::label('', 'Occupation:') }}
-                            {{ Form::text('occupation',$client->occupation,array('class' => 'form-control')) }}
+                            {{ Form::label('', 'Occupation:') }}<span class="red">*</span><div style="clear:both;"></div>
+                            {{ Form::text('occupation',$client->occupation,array('class' => 'form-control','id' => 'occupation')) }}
                         </div> 
                     </div>
                     <div class="form-group">

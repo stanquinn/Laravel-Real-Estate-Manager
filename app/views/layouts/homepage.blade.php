@@ -82,7 +82,7 @@
                 <div class="grid_1">
                     {{ Form::label('Max Price') }}<br>
                     <select name="max" class="search-select">
-                        <option value="0">Min Price</option>
+                        <option value="0">Max Price</option>
                         <option value="500000">500,000</option>
                         <option value="550000">550,000</option>
                         <option value="600000">600,000</option>

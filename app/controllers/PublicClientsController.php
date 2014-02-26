@@ -18,8 +18,28 @@ class PublicClientsController extends BaseController
 	public function main()
 	{
 		View::share('page_title','Client Account');
-		$reservations = Reservation::where('user_id',$this->user->id)->orderBy('created_at','desc')->paginate(10);
-		$transactions = Transaction::where('user_id',$this->user->id)->orderBy('created_at','desc')->paginate(10);
+		View::share('view_all',true);
+		$reservations = Reservation::where('user_id',$this->user->id)
+									->whereRaw("DATE(created_at) = CURRENT_DATE")
+									->orderBy('created_at','desc')->paginate(10);
+
+		$transactions = Transaction::where('user_id',$this->user->id)
+									->whereRaw("DATE(created_at) = CURRENT_DATE")
+									->orderBy('created_at','desc')->paginate(10);
+
+		return View::make('public.clients.main',compact('transactions','reservations'));		
+	}
+
+
+	public function all()
+	{
+		View::share('page_title','Client Account');
+		$reservations = Reservation::where('user_id',$this->user->id)
+									->orderBy('created_at','desc')->paginate(10);
+
+		$transactions = Transaction::where('user_id',$this->user->id)
+									->orderBy('created_at','desc')->paginate(10);
+									
 		return View::make('public.clients.main',compact('transactions','reservations'));		
 	}
 
@@ -57,6 +77,18 @@ class PublicClientsController extends BaseController
 	}
 	public function reserve($id)
 	{
+		// GET THE LAST RESERVATION
+		$last_user_reservation = Reservation::where('user_id',Sentry::getUser()->id)->orderBy('created_at','desc')->first();
+		if(!is_null($last_user_reservation))
+		{
+			$current_time = time();
+			$last_user_reservation_time = strtotime($last_user_reservation->created_at);
+			$interval = abs($current_time -  $last_user_reservation_time) / 3600;
+			if($interval < 15)
+			{
+				return Redirect::to('clients')->with('info','You must wait 15 hours before you can reserve again.');
+			}
+		}
 		$property = Property::find($id);
 		if(is_null($property)){ return Redirect::to('properties'); }
 		View::share('page_title','Reserve');
@@ -65,6 +97,19 @@ class PublicClientsController extends BaseController
 
 	public function reserve_post($id)
 	{
+		
+		// GET THE LAST RESERVATION
+		$last_user_reservation = Reservation::where('user_id',Sentry::getUser()->id)->orderBy('created_at','desc')->first();
+		if(!is_null($last_user_reservation))
+		{
+			$current_time = time();
+			$last_user_reservation_time = strtotime($last_user_reservation->created_at);
+			$interval = abs($current_time -  $last_user_reservation_time) / 3600;
+			if($interval < 15)
+			{
+				return Redirect::to('clients')->with('info','You must wait 15 hours before you can reserve again.');
+			}
+		}
 		if(is_null(Property::find($id))){ return Redirect::to('properties'); }
 		$rules = array(
 			'total_contract_price' 	=> 'required',
@@ -85,8 +130,6 @@ class PublicClientsController extends BaseController
 			$property = Property::find($id);
 			$user = $this->user;
 			// 0. CHANGE PROPERTY STATUS TO 0
-			$property->status = 0;
-			$property->save();
 			$downpayment = (intval(Input::get('downpayment')) / 100) * $property->price;
 			$equity = $property->price - $downpayment - $property->reservation_fee;
 			$total_months = intval(Input::get('total_months'));
@@ -424,7 +467,7 @@ class PublicClientsController extends BaseController
 		$home_address = json_decode($client->home_address);
 
 		$tin_number = array(
-			substr($client->tin_number,0,2),
+			substr($client->tin_number,0,3),
 			substr($client->tin_number,2,3),
 			substr($client->tin_number,5,3),
 			substr($client->tin_number,8,3)

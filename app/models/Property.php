@@ -14,9 +14,9 @@ class Property extends Eloquent {
         'baths'         => 'required|numeric',
         'lot'           => 'required|numeric',
         'block'         => 'required|numeric',
-        'reservation_fee'=> 'required|numeric',
-        'price'         => 'required|numeric',
-        'equity'        => 'required|numeric',
+        'reservation_fee'=> 'required',
+        'price'         => 'required',
+        'equity'        => 'required',
         'status'        => 'required|numeric',
 	);
     public function developer()
@@ -40,9 +40,28 @@ class Property extends Eloquent {
             return '<span class="badge badge-success">Active</span>';
         }
     }
+    public function monitorings()
+    {
+        return $this->hasMany('Monitoring');
+    }
     public function getCoverAttribute()
     {
 
+    }
+
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = str_replace(",","",$value);
+    }
+
+    public function setReservationFeeAttribute($value)
+    {
+        $this->attributes['reservation_fee'] = str_replace(",","",$value);
+    }
+
+    public function setEquityAttribute($value)
+    {
+        $this->attributes['equity'] = str_replace(",","",$value);
     }
 
     public function getPermalinkAttribute()

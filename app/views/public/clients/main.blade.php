@@ -4,6 +4,8 @@
         <h3 class="panel-title">My Reservations</h3>
         <div class="reservations" style="padding-top:10px;">
 			@include('layouts.notifications')
+
+            @if($reservations->count() > 0)
         	<table class="striped">
         		<tr>
         			<th>Model Number</th>
@@ -27,10 +29,17 @@
         		@endforeach
         	</table>
         	{{ $reservations->links() }}
+            @else
+                <div class="alert alert-success">No Results</div>
+            @endif
+            @if(isset($view_all))
+            <p style="text-align:right;"><a href="{{ URL::to('clients/all') }}">View Archive</a></p>
+            @endif
         </div>
         <div class="clear"></div><br><br>
         <h3 class="panel-title">My Transactions</h3>
         <div class="reservations" style="padding-top:10px;">
+            @if($transactions->count() > 0)
         	<table class="striped">
         		<tr>
         			<th>Reference No.</th>
@@ -53,7 +62,13 @@
         		<tr>	
         		@endforeach
         	</table>
-        	{{ $reservations->links() }}
+        	{{ $transactions->links() }}
+            @else
+                <div class="alert alert-success">No Results</div>
+            @endif
+            @if(isset($view_all))
+            <p style="text-align:right;"><a href="{{ URL::to('clients/all') }}">View Archive</a></p>
+            @endif
         </div>
     </div>
 @include('layouts.sidebar')    

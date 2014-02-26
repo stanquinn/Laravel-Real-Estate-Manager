@@ -27,14 +27,14 @@
                   <li><a href="{{ URL::to('services') }}">Services</a></li>
                   <li><a href="{{ URL::to('properties') }}">Properties</a></li>
                   <li><a href="{{ URL::to('contact-us') }}">Contact Us</a></li>
-                  @if(Sentry::check())
+                  @if(! Sentry::check())
+                    <li><a href="{{ URL::to('clients/login') }}">Client Login</a></li>
+                  @else
                     @if(!Sentry::getUser()->isSuperUser())
                       <li><a href="{{ URL::to('clients') }}">My Account</a></li>
                       <li><a href="{{ URL::to('clients/profile') }}">My Profile</a></li>
                       <li><a href="{{ URL::to('clients/logout') }}">Logout</a></li>
                     @endif
-                  @else
-                    <li><a href="{{ URL::to('clients/login') }}">Client Login</a></li>
                   @endif
               </ul>
         </nav>

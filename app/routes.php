@@ -86,6 +86,12 @@ Route::group(array('before' => 'auth','prefix' => 'admin'), function()
     Route::get('give_commission/{id}','AgentsController@give_commission')->where('id','[0-9]+');
     Route::post('give_commission/{id}','AgentsController@give_commission_post')->where('id','[0-9]+');
 
+    Route::get('monitorings/{id}','MonitoringsController@main')->where('id','[0-9]+');
+    Route::get('monitorings/{id}/create','MonitoringsController@create')->where('id','[0-9]+');
+    Route::post('monitorings/{id}/create','MonitoringsController@create_post')->where('id','[0-9]+');
+    Route::get('monitorings/{property_id}/{id}/update','MonitoringsController@update')->where('property_id','[0-9]+')->where('id','[0-9]+');
+    Route::patch('monitorings/{property_id}/{id}/update','MonitoringsController@update_post')->where('property_id','[0-9]+')->where('id','[0-9]+');
+    Route::get('monitorings/{id}/delete','MonitoringsController@delete')->where('id','[0-9]+');
 });
 
 Route::get('auth/logout',function(){
@@ -179,6 +185,7 @@ Route::group(array('before' => 'client','prefix' => 'clients'), function()
     Route::post('profile','PublicClientsController@profile_post');
     Route::get('reservation/{id}','PublicClientsController@reservation');
     Route::get('invoice/{id}','PublicClientsController@invoice');
+    Route::get('all','PublicClientsController@all');
 });
 // Administration Routes
 Route::group(array('before' => 'client_not_logged_in','prefix' => 'clients'), function()

@@ -14,51 +14,51 @@
                     {{ implode('', $errors->all(':message</br>')) }}
                 </div>
                 @endif
-                {{ Form::model($property, array('method' => 'PATCH', 'route' => array('admin.properties.update', $property->id))) }}
-                <div class="row">
+                {{ Form::model($property, array('id' => 'properties_form','method' => 'PATCH', 'route' => array('admin.properties.update', $property->id))) }}
+                 <div class="row">
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Property Name:') }}
-                        {{ Form::text('name',$property->name,array('class' => 'form-control')) }}
+                        {{ Form::text('name',null,array('class' => 'form-control required')) }}
                     </div>
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Model Number:') }}
-                        {{ Form::text('model_number',null,array('class' => 'form-control')) }}
+                        {{ Form::text('model_number',null,array('class' => 'form-control required')) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-12">
                         {{ Form::label('name', 'Description:') }}
-                        {{ Form::textarea('description',null,array('class' => 'form-control richeditor')) }}
+                        {{ Form::textarea('description',null,array('class' => 'form-control richeditor required')) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Equity:') }}
-                        {{ Form::text('equity',null,array('class' => 'form-control')) }}
+                        {{ Form::text('equity',null,array('class' => 'form-control required numeral','id' => 'equity')) }}
                     </div>
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Price:') }}
-                        {{ Form::text('price',null,array('class' => 'form-control')) }}
+                        {{ Form::text('price',null,array('class' => 'form-control required numeral','id' => 'price')) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Bedrooms:') }}
-                        {{ Form::text('beds',null,array('class' => 'form-control')) }}
+                        {{ Form::select('beds', range(1,10),null,array('class' => 'form-control required number')) }}
                     </div>
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Bathrooms:') }}
-                        {{ Form::text('baths',null,array('class' => 'form-control')) }}
+                        {{ Form::select('baths', range(1,10),null,array('class' => 'form-control required number')) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Floor Area:') }}
-                        {{ Form::text('floor_area',null,array('class' => 'form-control')) }}
+                        {{ Form::text('floor_area',null,array('class' => 'form-control required')) }}
                     </div>
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Lot Area:') }}
-                        {{ Form::text('lot_area',null,array('class' => 'form-control')) }}
+                        {{ Form::text('lot_area',null,array('class' => 'form-control required')) }}
                     </div>
                 </div>
                 <div class="row">
@@ -70,35 +70,35 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Block:') }}
-                        {{ Form::text('block',null,array('class' => 'form-control')) }}
+                        {{ Form::text('block',null,array('class' => 'form-control required number')) }}
                     </div>
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Lot:') }}
-                        {{ Form::text('lot',null,array('class' => 'form-control')) }}
+                        {{ Form::text('lot',null,array('class' => 'form-control required number')) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-4">
                         {{ Form::label('name', 'Reservation Fee:') }}
-                        {{ Form::text('reservation_fee',null,array('class' => 'form-control')) }}
+                        {{ Form::text('reservation_fee',null,array('class' => 'form-control required numeral','id'=>'reservation_fee')) }}
                     </div>
                     <div class="form-group col-lg-4">
                         {{ Form::label('name', 'Status:') }}
-                        {{ Form::select('status', array('0' => 'Inactive', '1' => 'Active'),null,array('class' => 'form-control')) }}
+                        {{ Form::select('status', array('0' => 'Inactive', '1' => 'Active'),null,array('class' => 'required form-control')) }}
                     </div>
                     <div class="form-group col-lg-4">
                         {{ Form::label('name', 'Location:') }}
-                        {{ Form::select('location_id',Location::dropdown(),null,array('class' => 'form-control')) }}
+                        {{ Form::select('location_id',Location::dropdown(),null,array('class' => 'form-control required number')) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Property Type:') }}
-                        {{ Form::select('type_id',Type::dropdown(),null,array('class' => 'form-control')) }}
+                        {{ Form::select('type_id',Type::dropdown(),null,array('class' => 'form-control required number')) }}
                     </div>
                     <div class="form-group col-lg-6">
                         {{ Form::label('name', 'Developer:') }}
-                        {{ Form::select('developer_id',Developer::dropdown(),null,array('class' => 'form-control')) }}
+                        {{ Form::select('developer_id',Developer::dropdown(),null,array('class' => 'form-control required number')) }}
                     </div>
                 </div>
                 <div class="row">

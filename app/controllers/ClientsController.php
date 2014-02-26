@@ -106,7 +106,8 @@ class ClientsController extends BaseController
 		$this->_exists($id);
 		$user = $this->user->find($id);
 		$user->deleted_at = date("Y-m-d H:i:s");
-		$user->email = date("YmdHis").'@puke.ph';
+		$user->email = date("YmdHis").'@xxx.ph';
+		$user->tin_number = date("YmdHis").'xxxxxxx';
 		$user->save();
 		return Redirect::to('admin/clients')->with('success','Client account has been successfully deleted.');
 	}

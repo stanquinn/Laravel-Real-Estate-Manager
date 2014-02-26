@@ -41,7 +41,7 @@
                     <td width="69%">{{ $client->occupation }}</td>
                   </tr>
                   <tr>
-                    <td style="background-color:#333; color:white; width:30%;">TIN Number</td>
+                    <td style="background-color:#333; color:white; width:30%;">TIN</td>
                     <td width="69%">{{ $client->tin_number }}</td>
                   </tr>
                   <tr>

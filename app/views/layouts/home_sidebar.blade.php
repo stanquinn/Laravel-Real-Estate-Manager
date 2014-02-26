@@ -3,6 +3,17 @@
                 <div class="widget-inner">
                     <p>This is where everything I like belongs.Where I always find people I love.This is where I feel safe. This is where I can laugh loud and run fast. This is where I dreams with the moon, and daydream when the sunshines. This is where I discover new things and invent stories I tell.This is where my friends play, and my toys wake up. This is a place I love. This is where I live.</p>
                 </div>
+                <h3 class="panel-title">Steps in Reserving Property </h3>
+                <div class="widget-inner">
+<p>
+  1. Select property.<br />
+  2.  Create an account. (An email activation will be sent to the email account)<br />
+  3.  Activate your account.<br />
+  4.  Login your account. <br />
+  5. Fill up Reservation Form.<br />
+  6.  MUST read The Terms and Condition. <br />
+  7. Click the reserve button (A summary of  transaction will be sent to your email account)</p>
+                </div>
                 <h3 class="panel-title">Latest News</h3>
                 <ul class="news-list">
                     @foreach($news as $n)

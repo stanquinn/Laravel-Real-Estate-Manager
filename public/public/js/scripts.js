@@ -36,6 +36,15 @@ $(document).ready(function(){
     		$(this).val(numbers.substr(0,7));
     	}
     });
+    $('#landline,#mobile').blur(function(){
+        var v = $(this).val();
+        if(v.match(/^\d+$/)){
+            return true;
+        }else{
+            $(this).val("");
+        }
+    });
+
     $('#mobile').keyup(function(){
     	var numbers = $(this).val();
     	if(numbers.length > 11)
@@ -58,6 +67,12 @@ $(document).ready(function(){
 	    	$('#tin_number_1').val(val);
 	    	$('#tin_number_2').focus();
     	}
+        var v = $(this).val();
+        if(v.match(/^\d+$/)){
+            return true;
+        }else{
+            $(this).val("");
+        }
     });
 
     $('#tin_number_2').keyup(function(e){
@@ -74,6 +89,12 @@ $(document).ready(function(){
 	    	$('#tin_number_2').val(val);
 	    	$('#tin_number_3').focus();
     	}
+        var v = $(this).val();
+        if(v.match(/^\d+$/)){
+            return true;
+        }else{
+            $(this).val("");
+        }
     });
 
     $('#tin_number_3').keyup(function(e){
@@ -90,6 +111,12 @@ $(document).ready(function(){
 	    	$('#tin_number_3').val(val);
 	    	$('#tin_number_4').focus();
     	}
+        var v = $(this).val();
+        if(v.match(/^\d+$/)){
+            return true;
+        }else{
+            $(this).val("");
+        }
     });
 
     $('#tin_number_4').keyup(function(e){
@@ -101,6 +128,12 @@ $(document).ready(function(){
     		var val = num.substr(0,3);
 	    	$('#tin_number_4').val(val);
     	}
+        var v = $(this).val();
+        if(v.match(/^\d+$/)){
+            return true;
+        }else{
+            $(this).val("");
+        }
     });
     // LOCATION CHANGE
 	$('#location').change(function(){
@@ -130,6 +163,16 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+    $('#agree').click(function(){
+        if($(this).is(':checked'))
+        {
+            $('#reserve-button').show();
+        }else{
+            $("#agree").notify("You must agree to our terms and conditions.");
+            $('#reserve-button').hide();
+        }
+    });
 });
 
 var calculate = function(){
@@ -240,3 +283,4 @@ var checkNan = function(self)
         self.value = 0;
     }
 }
+

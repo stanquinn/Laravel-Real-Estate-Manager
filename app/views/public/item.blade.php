@@ -66,7 +66,29 @@
         @endif
         <div style='clear:both;'></div><br>
         <h3 class="panel-title">Description</h3>
-        <div class="item" style="min-height:300px;">{{ $property->description }}</div>
+        <div class="item" style="min-height:300px;">
+            {{ $property->description }}
+
+        @if(is_object($property->monitorings) && $property->monitorings->count() > 0)
+            <br><br>
+            <h3 style="margin-bottom:10px; line-height:normal; font-siz:16px;">Available Slots</h3>
+            <table class="monitoring striped">
+                <tr>
+                    <th>Block</th>
+                    <th>Lot</th>
+                </tr>
+                @foreach($property->monitorings as $sex)
+                <tr>
+                    <th>{{ $sex->block }}</th>
+                    <th>{{ $sex->lot }}</th>
+                </tr>
+                @endforeach
+            </table>
+        @else
+            <br><br>
+            <div class="alert alert-info">No Available Blocks</div>
+        @endif
+        </div>
     </div>
 @include('layouts.sidebar')    
 @stop

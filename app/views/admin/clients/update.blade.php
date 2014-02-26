@@ -67,7 +67,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-6">
-                        {{ Form::label('', 'Tin Number:') }}
+                        {{ Form::label('', 'TIN:') }}
                         {{ Form::text('tin_number',null,array('class' => 'form-control')) }}
                     </div>
                     <div class="col-lg-6">

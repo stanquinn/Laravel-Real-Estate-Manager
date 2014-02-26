@@ -14,7 +14,6 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Earnings</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -24,7 +23,6 @@
                           <td>{{ $agent->last_name }}, {{ $agent->first_name }}</td>
                           <td>{{ $agent->email }}</td>
                           <td>{{ $agent->phone }}</td>
-                          <td>{{ number_format($agent->earnings,2) }}</td>
                           <td>
                           <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -34,7 +32,7 @@
                             <ul class="dropdown-menu">
                                <li><a href="{{ URL::to('admin/agents/'.$agent->id.'/edit') }}" >Update</a></li> 
                                <li><a href="{{ URL::to('admin/agents/'.$agent->id) }}" >View Profile</a></li>
-                               <li><a href="{{ URL::to('admin/agents/commissions/'.$agent->id) }}" >Commissions</a></li>
+                               <!--<li><a href="{{ URL::to('admin/agents/commissions/'.$agent->id) }}" >Commissions</a></li>-->
                                <li><a href="{{ URL::to('admin/agents/delete/'.$agent->id) }}" onclick="if(window.confirm('Are you sure you want to delete this item?')){ return true;}else{return false;}">Delete</a></li>
                             </ul>
                           </div>

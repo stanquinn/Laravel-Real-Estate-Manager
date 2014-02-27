@@ -14,9 +14,11 @@ class MonitoringsController extends BaseController
 			return Redirect::to('admin/properties')->with('error','Property was not found.');
 		}
 		Session::put('redirect_url',URL::current());
-		$monitorings = Monitoring::orderBy('block','desc')->get();
+		$monitorings = Monitoring::orderBy('block','desc')->where('property_id',$property_id)->get();
+		$total_available =  Monitoring::orderBy('block','desc')->where('status',true)->where('property_id',$property_id)->count();
+		$total_unavailable =  Monitoring::orderBy('block','desc')->where('status',false)->where('property_id',$property_id)->count();
 		$property = Property::find($property_id);
-		return View::make('admin.monitorings.main',compact('monitorings','property'));
+		return View::make('admin.monitorings.main',compact('monitorings','property','total_unavailable','total_available'));
 	}
 	public function create($property_id)
 	{
@@ -43,6 +45,7 @@ class MonitoringsController extends BaseController
 			$monitoring->property_id = $property_id;
 			$monitoring->block = Input::get('block');
 			$monitoring->lot = Input::get('lot');
+			$monitoring->status = Input::get('status');
 			$monitoring->save();
 			return Redirect::to(URL::current())->with('success','Block has been added');
 		}
@@ -76,6 +79,7 @@ class MonitoringsController extends BaseController
 			$monitoring->property_id = $property_id;
 			$monitoring->block = Input::get('block');
 			$monitoring->lot = Input::get('lot');
+			$monitoring->status = Input::get('status');
 			$monitoring->save();
 			return Redirect::to(URL::current())->with('success','Block has been saved');
 		}

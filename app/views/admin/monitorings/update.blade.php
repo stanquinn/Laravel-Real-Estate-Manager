@@ -25,6 +25,10 @@
                         {{ Form::text('lot',null,array('class' => 'form-control')) }}
                     </div>
                     <div class="form-group">
+                        {{ Form::label('status', 'Status:') }}
+                        {{ Form::select('status', array('available' => 'Available', 'unavailable' => 'Unavailable'),null,array('class' => 'form-control')) }}
+                    </div>
+                    <div class="form-group">
                         {{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
                         <a class="btn btn-danger" href="{{ URL::to('admin/monitorings/'.$property->id) }}">Back To List</a>
                     </div>

@@ -19,12 +19,13 @@ class PublicClientsController extends BaseController
 	{
 		View::share('page_title','Client Account');
 		View::share('view_all',true);
+		DB::statement('SET time_zone = "Asia/Manila"');
 		$reservations = Reservation::where('user_id',$this->user->id)
-									->whereRaw("DATE(created_at) = CURRENT_DATE")
+									->where(DB::raw("DATE(created_at)"),date("Y-m-d"))
 									->orderBy('created_at','desc')->paginate(10);
 
 		$transactions = Transaction::where('user_id',$this->user->id)
-									->whereRaw("DATE(created_at) = CURRENT_DATE")
+									->where(DB::raw("DATE(created_at)"),date("Y-m-d"))
 									->orderBy('created_at','desc')->paginate(10);
 
 		return View::make('public.clients.main',compact('transactions','reservations'));		
@@ -34,10 +35,13 @@ class PublicClientsController extends BaseController
 	public function all()
 	{
 		View::share('page_title','Client Account');
+		DB::statement('SET time_zone = "Asia/Manila"');
 		$reservations = Reservation::where('user_id',$this->user->id)
+									->where(DB::raw("DATE(created_at)"),"!=",date("Y-m-d"))
 									->orderBy('created_at','desc')->paginate(10);
 
 		$transactions = Transaction::where('user_id',$this->user->id)
+									->where(DB::raw("DATE(created_at)"),"!=",date("Y-m-d"))
 									->orderBy('created_at','desc')->paginate(10);
 									
 		return View::make('public.clients.main',compact('transactions','reservations'));		
@@ -90,9 +94,28 @@ class PublicClientsController extends BaseController
 			}
 		}
 		$property = Property::find($id);
+
+		// CHECKS IF PROPERTY HAS ANY AVAILABLE SLOTS
+		$count = Monitoring::where('property_id',$id)->where('status',1)->count();
+		if($count < 1)
+		{
+			return Redirect::to('properties/item/'.$id)->with('error','Sorry there are no available slots for this project.');
+		}
+
+		$blocks = array(
+			'Select Block'
+		);
+		foreach($property->monitorings as $m)
+		{
+			if($m->status == 'available' && !in_array($m->block, array_values($blocks)))
+			{
+				$blocks[$m->block] = $m->block;
+			}
+				
+		}
 		if(is_null($property)){ return Redirect::to('properties'); }
 		View::share('page_title','Reserve');
-		return View::make('public.clients.reserve',compact('property'));
+		return View::make('public.clients.reserve',compact('property','blocks'));
 	}
 
 	public function reserve_post($id)
@@ -111,6 +134,14 @@ class PublicClientsController extends BaseController
 			}
 		}
 		if(is_null(Property::find($id))){ return Redirect::to('properties'); }
+
+		$monitoring = Monitoring::where('block',Input::get('block'))->where('lot',Input::get('lot'))-first();
+		
+		if(!is_null($monitoring) && $monitoring->status == false)
+		{
+			return Redirect::to('clients')->with('info','This slut is not available sorry.');
+		}
+
 		$rules = array(
 			'total_contract_price' 	=> 'required',
 			'reservation_fee'		=> 'required',
@@ -119,7 +150,9 @@ class PublicClientsController extends BaseController
 			'total_months' 			=> 'required',
 			'monthly_fee'			=> 'required',
 			'agent_id'				=> 'required',
-			'terms'					=> 'required'
+			'terms'					=> 'required',
+			'block'					=> 'required|numeric',
+			'lot'					=> 'required|numeric'
 
 		);
 		$validator = Validator::make(Input::all(),$rules);
@@ -141,6 +174,8 @@ class PublicClientsController extends BaseController
 			$reservation->total_contract_price = intval(Input::get('total_contract_price'));
 			$reservation->downpayment = $downpayment;
 			$reservation->reservation_fee = $property->reservation_fee;
+			$reservation->block = Input::get('block');
+			$reservation->lot = Input::get('lot');
 			// LOANABLE AMOUNT
 			$reservation->equity = $equity;
 			$reservation->total_months = $total_months;
@@ -158,7 +193,8 @@ class PublicClientsController extends BaseController
 			$transaction->amount = $property->reservation_fee;
 			$transaction->remarks = "Property Reservation";
 			$transaction->save();
-			
+			// UPDATE MONITORING
+			DB::table('monitorings')->where('block',Input::get('block'))->where('lot',Input::get('lot'))->update(array('status' => false));
 			// 3.GENERATE INVOICE
 			$x =  View::make('admin.transactions.show', compact('transaction','user','property'));
 			$pdf = storage_path().'/invoices/'.$transaction->reference_number.'.pdf';
@@ -302,10 +338,8 @@ class PublicClientsController extends BaseController
 		$rules['home_city'] 	= 'required';
 		$rules['home_zipcode'] 	= 'required|numeric';
 
-		$rules['work_street'] 	= 'required';
-		$rules['work_barangay'] = 'required';
-		$rules['work_city'] 	= 'required';
-		$rules['work_zipcode'] 	= 'required|numeric';
+		$rules['work_zipcode'] 	= 'numeric';
+
 
 		$rules['tin_number_1'] 	= 'numeric|required|str_len:3';
 		$rules['tin_number_2'] 	= 'numeric|required|str_len:3';
@@ -509,12 +543,7 @@ class PublicClientsController extends BaseController
 		$rules['home_barangay'] = 'required';
 		$rules['home_city'] 	= 'required';
 		$rules['home_zipcode'] 	= 'required|numeric';
-
-		$rules['work_street'] 	= 'required';
-		$rules['work_barangay'] = 'required';
-		$rules['work_city'] 	= 'required';
-		$rules['work_zipcode'] 	= 'required|numeric';
-
+		$rules['work_zipcode'] 	= 'numeric';
 		$rules['tin_number_1'] 	= 'numeric|required|str_len:3';
 		$rules['tin_number_2'] 	= 'numeric|required|str_len:3';
 		$rules['tin_number_3'] 	= 'numeric|required|str_len:3';

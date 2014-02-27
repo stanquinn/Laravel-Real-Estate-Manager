@@ -18,7 +18,7 @@
                 </div>
                 <div class="grid_2">
                     {{ Form::label('Developer') }}<br>
-                    {{ Form::select('developer',Developer::dropdown(true),null,array('class' => 'search-select')) }}
+                    {{ Form::select('developer',Developer::dropdown(true),null,array('class' => 'search-select','id' => 'developer-dropdown')) }}
                 </div>
                 <div class="grid_1">
                     {{ Form::label('Beds') }}<br>

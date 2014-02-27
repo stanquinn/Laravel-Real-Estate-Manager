@@ -58,6 +58,16 @@
                 <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Model Number:</td>
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ $property->model_number }}</td>
             </tr>
+            @if(isset($reservation->block))
+            <tr>
+                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Block:</td>
+                <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ $reservation->block }}</td>
+            </tr>
+            <tr>
+                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Lot:</td>
+                <td width="83%" style="none;border-collapse: collapse;padding: 5px;">{{ $reservation->lot }}</td>
+            </tr>
+            @endif
         </table>
         <br />
     <div style="background-color:#000; line-height:30px; font-size: 24px;display: block;text-align: center;color: #FFF;text-transform: uppercase;margin-bottom: 10px;">PROPERTY INFORMATION</div>
@@ -108,7 +118,7 @@
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">Php{{ number_format($reservation->downpayment,2) }}</td>
             </tr>
             <tr>
-                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Loanable Amount:</td>
+                <td width="17%" style="none;border-collapse: collapse;padding: 5px; width:50%; background-color:none; color:#000; font-weight:bold;">Balance:</td>
                 <td width="83%" style="none;border-collapse: collapse;padding: 5px;">Php{{ number_format($reservation->equity,2) }}</td>
             </tr>
             <tr>

@@ -3,6 +3,7 @@
     <div class="grid_8" id="left">
         <h3 class="panel-title">{{ $property->name }}</h3>
         <div class="item">
+            @include('layouts.notifications')
             <div class="item-main-image half">
                 <img src="{{ Property::primary_photo($property->id,array(291,210)) }}"/>
                 <button type="submit" class="search-button button-yellow reserve" onclick="window.location = '{{ URL::to('clients/reserve/'.$property->id) }}'" style="width:48%;">Reserve Property</button>
@@ -71,16 +72,18 @@
 
         @if(is_object($property->monitorings) && $property->monitorings->count() > 0)
             <br><br>
-            <h3 style="margin-bottom:10px; line-height:normal; font-siz:16px;">Available Slots</h3>
+            <h3 class="panel-title">Available Slots</h3>
             <table class="monitoring striped">
                 <tr>
-                    <th>Block</th>
-                    <th>Lot</th>
+                    <td>Block</td>
+                    <td>Lot</td>
+                    <td>Status</td>
                 </tr>
                 @foreach($property->monitorings as $sex)
                 <tr>
-                    <th>{{ $sex->block }}</th>
-                    <th>{{ $sex->lot }}</th>
+                    <td>{{ $sex->block }}</td>
+                    <td>{{ $sex->lot }}</td>
+                    <td>{{ $sex->status }}</td>
                 </tr>
                 @endforeach
             </table>

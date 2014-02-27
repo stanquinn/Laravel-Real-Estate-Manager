@@ -37,10 +37,10 @@
                     <div class="form-group row">
                         <div class="col-lg-6">
                             {{ Form::label('', 'TIN:') }}<span class="red">*</span><div style="clear:both;"></div>
-                            <div class="tin-control">{{ Form::text('tin_number_1',$tin_number[0],array('class' => 'form-control','id' => '')) }}<span>-</span></div>
-                            <div class="tin-control">{{ Form::text('tin_number_2',$tin_number[1],array('class' => 'form-control','id' => '')) }}<span>-</span></div>
-                            <div class="tin-control">{{ Form::text('tin_number_3',$tin_number[2],array('class' => 'form-control','id' => '')) }}<span>-</span></div>
-                            <div class="tin-control">{{ Form::text('tin_number_4',$tin_number[3],array('class' => 'form-control','id' => '')) }}</div>
+                            <div class="tin-control">{{ Form::text('tin_number_1',$tin_number[0],array('class' => 'form-control','id' => 'tin_number_1')) }}<span>-</span></div>
+                            <div class="tin-control">{{ Form::text('tin_number_2',$tin_number[1],array('class' => 'form-control','id' => 'tin_number_2')) }}<span>-</span></div>
+                            <div class="tin-control">{{ Form::text('tin_number_3',$tin_number[2],array('class' => 'form-control','id' => 'tin_number_3')) }}<span>-</span></div>
+                            <div class="tin-control">{{ Form::text('tin_number_4',$tin_number[3],array('class' => 'form-control','id' => 'tin_number_4')) }}</div>
                             <input type="hidden" name="tin_number" value="{{ $client->tin_number }}" id="tin_number"/>
                         
                         </div>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-12 address-field">
-                            {{ Form::label('', 'Work Address:') }}<span class="red">*</span><div style="clear:both;"></div>
+                            {{ Form::label('', 'Work Address:') }}<span class="red"></span><div style="clear:both;"></div>
                             {{ Form::text('work_street',$work_address[0],array('class' => 'form-control first','placeholder' => 'Street','id' => 'work_street')) }}
                             {{ Form::text('work_barangay',$work_address[1],array('class' => 'form-control','placeholder' => 'Barangay','id' => 'work_barangay')) }}
                             {{ Form::text('work_city',$work_address[2],array('class' => 'form-control','placeholder' => 'City','id' => 'work_city')) }}
@@ -96,11 +96,11 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-6">
-                            {{ Form::label('', 'Company:') }}<span class="red">*</span><div style="clear:both;"></div>
+                            {{ Form::label('', 'Company:') }}<span class="red"></span><div style="clear:both;"></div>
                             {{ Form::text('company',$client->company,array('class' => 'form-control','id' => 'company')) }}
                         </div>
                         <div class="col-lg-6 last">
-                            {{ Form::label('', 'Occupation:') }}<span class="red">*</span><div style="clear:both;"></div>
+                            {{ Form::label('', 'Occupation:') }}<span class="red"></span><div style="clear:both;"></div>
                             {{ Form::text('occupation',$client->occupation,array('class' => 'form-control','id' => 'occupation')) }}
                         </div> 
                     </div>

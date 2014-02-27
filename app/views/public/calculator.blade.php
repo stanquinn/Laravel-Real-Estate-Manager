@@ -58,7 +58,7 @@
 		    </td>
 		</tr>
 		<tr>
-		    <td class="item-info-label">Loanable Amount</td>
+		    <td class="item-info-label">Balance</td>
 		    <td>{{ Form::text('loanable_amount',number_format($loanable_amount,2),array('id' => 'loanable_amount','class' => 'control-input','readonly' => true)) }}</td>
 		</tr>
 		<tr>

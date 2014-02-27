@@ -13,7 +13,7 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('Developer') }}
-                        {{ Form::select('developer',Developer::dropdown(true),null,array('class' => 'search-select')) }}
+                        {{ Form::select('developer',Developer::dropdown(true),null,array('class' => 'search-select','id' => 'developer-dropdown')) }}
                     </div>
                     <div class="form-group">
                         <div class="form-half">

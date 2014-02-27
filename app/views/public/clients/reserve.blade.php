@@ -46,7 +46,7 @@
 		    </td>
 		</tr>
 		<tr>
-		    <td class="item-info-label">Loanable Amount</td>
+		    <td class="item-info-label">Balance</td>
 		    <td>{{ Form::text('loanable_amount',number_format($loanable_amount,2),array('id' => 'loanable_amount','class' => 'control-input','readonly' => true)) }}</td>
 		</tr>
 		<tr>
@@ -151,10 +151,14 @@
 		</div>
 		<div class="reservation-holder">
 			<div class="half">
-				<!--
-				<label>Unit Type:</label>
-				{{ Form::select('unit_type',array('lot' => 'Lot Only', 'house and lot' => 'House and Lot'),null,array('class' => 'control-input')) }}
-				-->
+				<div class="half">
+					<label>Block</label>
+					{{ Form::select('block',$blocks,null,array('class' => 'control-input','id' => 'block-select')) }}
+				</div>
+				<div class="half">
+					<label>Lot</label>
+					{{ Form::select('lot',array('Select Lot'),null,array('class' => 'control-input','id' => 'lot-select')) }}
+				</div>
 			</div>
 			<div class="half last">
 				<label>Payment Terms:</label>

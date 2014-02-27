@@ -13,13 +13,20 @@ Route::post('request_location',function(){
         
         $location = strtolower(Input::get('location'));
         $all_types = Type::all();
+        $all_developers = Developer::all();
+
         $response =  array(
-            'count' => 0,
-            'types' => array(0 => 'Any')
+            'count'         => 0,
+            'types'         => array(0 => 'Any'),
+            'developers'    => array(0 => 'Any')
         );
         foreach($all_types as $a)
         {
             $response['types'][$a->id] = ucwords($a->name);
+        } 
+        foreach($all_developers as $a)
+        {
+            $response['developers'][$a->id] = ucwords($a->name);
         } 
         // LETS FIND PROPERTIES WITH 
         $properties = Property::where('location_id',$location)->get();
@@ -28,9 +35,14 @@ Route::post('request_location',function(){
         {
             $response['count'] = 1;
             $response['types'] = array(0 => 'Any');
+            $response['developers'] = array(0 => 'Any');
             foreach($properties as $p)
             {
-                $response['types'][$p->type->id] = $p->type->name;
+                if(!in_array($p->type->id, array_keys($response["types"])))
+                    $response['types'][$p->type->id] = ucwords($p->type->name);
+
+                if(!in_array($p->developer->id, array_keys($response["developers"])))
+                    $response['developers'][$p->developer->id] = ucwords($p->developer->name);
             }  
         }
         header("content-type:application/json");
@@ -186,6 +198,19 @@ Route::group(array('before' => 'client','prefix' => 'clients'), function()
     Route::get('reservation/{id}','PublicClientsController@reservation');
     Route::get('invoice/{id}','PublicClientsController@invoice');
     Route::get('all','PublicClientsController@all');
+
+    Route::post('request/lots',function(){
+        $block = Input::get('block');
+        $monitoring = Monitoring::where('block',$block[0])->where('status',1)->get();
+        $array = array();
+        foreach($monitoring as $m)
+        {
+            array_push($array, $m->lot);
+        }
+        header("content-type:text/json");
+        echo json_encode($array);
+    });
+    
 });
 // Administration Routes
 Route::group(array('before' => 'client_not_logged_in','prefix' => 'clients'), function()

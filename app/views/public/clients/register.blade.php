@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-12 address-field">
-                            {{ Form::label('', 'Work Address:') }}<span class="red">*</span><div style="clear:both;"></div>
+                            {{ Form::label('', 'Work Address:') }}<span class="red"></span><div style="clear:both;"></div>
                             {{ Form::text('work_street',null,array('class' => 'form-control first','id' => 'work_street','placeholder' => 'Street')) }}
                             {{ Form::text('work_barangay',null,array('class' => 'form-control','id' => 'work_barangay','placeholder' => 'Barangay')) }}
                             {{ Form::text('work_city',null,array('class' => 'form-control','id' => 'work_city','placeholder' => 'City')) }}
@@ -95,11 +95,11 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-6">
-                            {{ Form::label('', 'Company:') }}<span class="red">*</span><div style="clear:both;"></div>
+                            {{ Form::label('', 'Company:') }}<span class="red"></span><div style="clear:both;"></div>
                             {{ Form::text('company',null,array('class' => 'form-control','id' => 'company')) }}
                         </div>
                         <div class="col-lg-6 last">
-                            {{ Form::label('', 'Occupation:') }}<span class="red">*</span><div style="clear:both;"></div>
+                            {{ Form::label('', 'Occupation:') }}<span class="red"></span><div style="clear:both;"></div>
                             {{ Form::text('occupation',null,array('class' => 'form-control','id' => 'occupation')) }}
                         </div> 
                     </div>

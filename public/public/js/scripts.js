@@ -154,12 +154,16 @@ $(document).ready(function(){
 				{
 					$.notify("The are no properties posted in this location.", "error");
 				}
-
-				$.each(items.types, function( index, value ) {
+                $.each(items.types, function( index, value ) {
 					var node = '<option value="'+index+'">'+value+'</option>';
 				  	$('#type').append(node);
 				});
 
+                $('#developer-dropdown').find('option').remove();
+                $.each(items.developers, function( index, value ) {
+                    var node = '<option value="'+index+'">'+value+'</option>';
+                    $('#developer-dropdown').append(node);
+                });
 			}
 		});
 	});
@@ -173,6 +177,36 @@ $(document).ready(function(){
             $('#reserve-button').hide();
         }
     });
+
+    $('#block-select').change(function(){
+        var block = $(this).val();
+        $('#lot-select').find('option').remove();
+        if(block == "" || block == 0 || typeof(block) == 'NaN'){
+            alert("You must specify a block number.");
+        }else{
+            $.ajax({
+                'url'       : '/clients/request/lots',
+                'type'      : 'POST',
+                'data'      : 'block='+block,
+                'success'   : function(data){
+                    //var data = JSON.parse(data);
+                    if(data.length == 0){
+                        alert("There are not lots available for this block at this moment. Please try to choose a different block from options.");
+                    }else{
+                        for(i=0;i<data.length;i++)
+                        {
+                            if(data[i] != "]" || data[i] != "[")
+                                var node = '<option value="'+data[i]+'">'+data[i]+'</option>';
+                                $('#lot-select').append(node);
+                        }
+                        console.log(data);
+                    } 
+                }
+            });
+        }
+    });
+
+    
 });
 
 var calculate = function(){

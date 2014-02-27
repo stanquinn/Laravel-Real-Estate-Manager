@@ -11,12 +11,8 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
 		'password'		=> 'required',
 		'email'			=> 'required|unique:users,email',
 		'tin_number'	=> 'required|str_len:12|unique:users,tin_number',
-		'home_address'	=> 'required',
-		'work_address'  => 'required',
-		'company'		=> 'required',
 		'mobile'		=> 'required|numeric|str_len:11',
-		'landline'		=> 'str_len:7|numeric',
-		'occupation'	=> 'required'
+		'landline'		=> 'required|str_len:7|numeric'
 	);
 
 	public static function get_rules($id = null)

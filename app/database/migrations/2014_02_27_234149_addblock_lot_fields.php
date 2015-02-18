@@ -13,7 +13,7 @@ class AddblockLotFields extends Migration {
 	public function up()
 	{
 		//
-		Schema::table('reservations',function($table){
+		Schema::create('reservations',function($table){
 			$table->integer('lot');
 			$table->integer('block');
 		});

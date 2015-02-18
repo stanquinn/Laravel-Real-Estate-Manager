@@ -26,7 +26,9 @@ class AddStatusFieldToMonitorings extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('monitorings');
+		Schema::table('monitorings',function($table){
+			$table->dropColumn('status');
+		});
 	}
 
 }
